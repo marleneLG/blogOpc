@@ -1,6 +1,9 @@
 {
-    "require": {
-        "monolog/monolog": "2.0.*",
-        "twig/twig": "2.0"
-    }
+    "name": "marle/blog-opc",
+    "autoload": {
+        "psr-4": {
+            "Marle\\BlogOpc\\": "src/"
+        }
+    },
+    "require": {}
 }
