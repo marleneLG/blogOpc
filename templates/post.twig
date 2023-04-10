@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+{% block content %}
+
+<h2 class="mb-4">Les derniers billets</h2>
+<h2>Détails et commentaires</h2>
+
+<div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ post.title }}</h3>
+                <p class="card-text">
+                <h1>{{ post.auteur }}</h1>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.message }}</p>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

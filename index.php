@@ -1,8 +1,17 @@
 <?php
+require __DIR__ . '/vendor/autoload.php';
 
-require_once('src/controllers/homepage.php');
-require_once('src/controllers/post.php');
-require_once('src/controllers/add_comment.php');
+use Marle\BlogOpc\controllers\PostController;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
-post();
-homepage();
+$loader = new FilesystemLoader('templates');
+$twig = new Environment($loader, [
+    'cache' => 'cache',
+    'debug' => true,
+    'auto_reload' => true
+]);
+
+//controller
+$postController = new PostController($twig);
+$postController->index();
