@@ -5,22 +5,28 @@ Blog
 {% endblock title %}
 
 {% block content %}
-
-<h2 class="mb-4">Les derniers billets</h2>
-<h2>Détails et commentaires</h2>
-
-<div class="row">
-    <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">{{ post.title }}</h3>
-                <p class="card-text">
-                <h1>{{ post.auteur }}</h1>
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.message }}</p>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% for currentPost in posts %}
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">{{ currentPost.title }}</h2>
+                    <h3 class="post-subtitle">{{ currentPost.message }}</h3>
+                </a>
+                <p class="post-meta">
+                    Posté par
+                    <a href="#!">{{ currentPost.users_id }}</a>
+                    <b>{{ currentPost.created_at }}</b>
                 </p>
-
             </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+            <!-- Divider-->
+            <hr class="my-4" />
         </div>
     </div>
 </div>

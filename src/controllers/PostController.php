@@ -19,8 +19,9 @@ class PostController
      */
     public function index()
     {
-        $post = new ModelPost;
-        echo $this->twig->render('post.twig', ['post' => $post->test()]);
+        $post = new ModelPost();
+        $allPosts = $post->getPosts();
+        echo $this->twig->render('post.twig', ['posts' => $allPosts]);
     }
 
     public function create()

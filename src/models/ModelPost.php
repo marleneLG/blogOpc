@@ -2,17 +2,17 @@
 
 namespace Marle\BlogOpc\models;
 
+require_once('src/model.php');
+
+use SPDO;
+
 class ModelPost
 {
-    public function test()
+    public function getPosts()
     {
-
-        $post = [
-            'auteur' => 'jo',
-            'title' => 'Hey!',
-            'message' => "Bonjour à tous",
-        ];
-
-        return $post;
+        $statement = SPDO::getInstance()->query('SELECT * FROM posts');
+        $statement->execute();
+        $posts = $statement->fetchAll();
+        return $posts;
     }
 }
