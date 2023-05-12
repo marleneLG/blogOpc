@@ -13,10 +13,14 @@ $twig = new Environment($loader, [
     'auto_reload' => true
 ]);
 
-//controller
-$postController = new PostController($twig);
-$postController->index();
-
-
-// $homeController = new HomeController($twig);
-// $homeController->index();
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'post') {
+        $postController = new PostController($twig);
+        $postController->index();
+    } else {
+        echo 'Erreur';
+    }
+} else {
+    $homeController = new HomeController($twig);
+    $homeController->index();
+}
