@@ -31,12 +31,30 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"  href="path('templates\home.twig')">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Qui suis-je</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Compétences</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="templates\post.twig">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.twig">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Qui suis-je</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="index.php?controller=PostController&action=post">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Contact</a></li>
                 </ul>
+
+                {# si admin
+                                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="">Accueil</a></li>
+                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="">Commentaires (en attente
+                            de validation ou à supprimer)</a></li>
+                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="">Utilisateurs (en attente
+                            de validation, à modifier ou supprimer)</a></li>
+                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Nouveau
+                            post</a></li>
+                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="g">Déconnexion</a></li>
+                                    </ul>
+                                #}
             </div>
         </div>
     </nav>
@@ -87,6 +105,8 @@
                         </li>
                     </ul>
                     <div class="small text-center text-muted fst-italic">Copyright &copy; Le Guern Marlène 2023</div>
+                    <div class="small text-center text-muted fst-italic"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="">Connexion/Admin</a></div>
                 </div>
             </div>
         </div>
