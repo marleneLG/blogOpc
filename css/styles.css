@@ -12459,8 +12459,7 @@ header.masthead {
   background-color: #007189;
   background-size: cover;
   background-attachment: scroll;
-  background-image: url('assets/img/home-bg.jpg');
-  background-image: url('ass');
+  background-image: url('../assets/img/home-bg.jpg');
 }
 
 header.masthead:before {

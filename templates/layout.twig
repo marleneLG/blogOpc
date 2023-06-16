@@ -31,31 +31,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#who">Qui suis-je</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#competences">Compétences</a>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php#who">Qui suis-je</a>
                     </li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="index.php?controller=PostController&action=post">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#contact">Contact</a></li>
+                            href="index.php#competences">Compétences</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?action=post">Blog</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php#contact">Contact</a>
+                    </li>
+                    {# si admin #}
+                    {% if session.logged_user is defined %}
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="index.php?action=management">Gestion</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="index.php?action=disconnect">Déconnexion</a></li>
+                    {% endif %}
                 </ul>
-
-                {# si admin
-                                <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="">Accueil</a></li>
-                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="">Commentaires (en attente
-                            de validation ou à supprimer)</a></li>
-                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="">Utilisateurs (en attente
-                            de validation, à modifier ou supprimer)</a></li>
-                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Nouveau
-                            post</a></li>
-                                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="g">Déconnexion</a></li>
-                                    </ul>
-                                #}
             </div>
         </div>
     </nav>
@@ -107,7 +100,7 @@
                     </ul>
                     <div class="small text-center text-muted fst-italic">Copyright &copy; Le Guern Marlène 2023</div>
                     <div class="small text-center text-muted fst-italic"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                            href="">Connexion/Admin</a></div>
+                            href="index.php?action=connect">Connexion/Admin</a></div>
                 </div>
             </div>
         </div>

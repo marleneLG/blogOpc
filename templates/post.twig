@@ -9,18 +9,16 @@ Blog
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
+            {% if session.logged_user is defined %}
+            <button type="button"><a href="index.php?action=addPost">Ajouter un post</a> </button>
+            {% endif %}
             {% for currentPost in posts %}
             <!-- Post preview-->
             <div class="post-preview">
-                <a href="post.html">
+                <a href="index.php?action=comment&amp;id={{ currentPost.id }}">
                     <h2 class="post-title">{{ currentPost.title }}</h2>
-                    <h3 class="post-subtitle">{{ currentPost.message }}</h3>
+                    <p>{{'Cliquez pour voir le post dans son intégralité'}}</p>
                 </a>
-                <p class="post-meta">
-                    Posté par
-                    <a href="#!">{{ currentPost.users_id }}</a>
-                    <b>{{ currentPost.created_at }}</b>
-                </p>
             </div>
             <!-- Divider-->
             <hr class="my-4" />

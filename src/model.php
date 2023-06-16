@@ -1,5 +1,8 @@
 <?php
 
+// namespace Marle\BlogOpc\src\model;
+// use PDO;
+
 class SPDO
 {
     /**
@@ -92,5 +95,10 @@ class SPDO
     public function query($query)
     {
         return $this->PDOInstance->query($query);
+    }
+
+    public function prepare($prepare)
+    {
+        return $this->PDOInstance->prepare($prepare);
     }
 }

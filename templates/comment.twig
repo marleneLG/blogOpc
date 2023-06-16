@@ -1,3 +1,46 @@
-# extend
-{% block body %}
-{% endblock %}
+{% extends 'layout.twig' %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+{% block content %}
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <h3 class="post-subtitle">{{ post.message }}</h3>
+                <p class="post-meta">
+                    Posté par
+                    <b href="#!">{{ post.users_id }}</b>
+
+                    <b>{{ post.created_at }}</b>
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            <h1>{{'Commentaires'}}</h1>
+            {% for currentComment in comments %}
+            <p>{{comments.message}}</p>
+            <div>
+                <p class="post-meta">
+                <p>{{ currentComment.message }}</p>
+                Rédigé par
+                <b>{{ currentComment.users_id }}</b>
+                Le
+                <b>{{ currentComment.created_at }}</b>
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+            <!-- Divider-->
+            <hr class="my-4" />
+        </div>
+    </div>
+    <button type="button"><a href="index.php?action=addComment">Ajouter un commentaire</a> </button>
+</div>
+{% endblock content %}
