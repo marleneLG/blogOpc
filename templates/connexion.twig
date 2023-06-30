@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+{% block content %}
+<section class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="my-5">
+                <p>Se Connecter</p>
+                <form method="post" action="index.php?action=login">
+                    <div>
+                        <input type="text" name="email" placeholder="Email">
+                        <input type="password" name="password" placeholder="Mot de passe">
+                    </div>
+                    <br />
+                    <button type="submit">Valider</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

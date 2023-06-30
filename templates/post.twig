@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+{% block content %}
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            {% if session.logged_user is defined %}
+            <button type="button"><a href="index.php?action=addPost">Ajouter un post</a> </button>
+            {% endif %}
+            {% for currentPost in posts %}
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="index.php?action=comment&amp;id={{ currentPost.id }}">
+                    <h2 class="post-title">{{ currentPost.title }}</h2>
+                    <p>{{'Cliquez pour voir le post dans son intégralité'}}</p>
+                </a>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+            <!-- Divider-->
+            <hr class="my-4" />
+        </div>
+    </div>
+</div>
+{% endblock content %}
