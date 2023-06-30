@@ -15,8 +15,8 @@ Blog
                 <h3 class="post-subtitle">{{ post.message }}</h3>
                 <p class="post-meta">
                     Posté par
-                    <b href="#!">{{ post.users_id }}</b>
-
+                    <b href="#!">{{ post.username }}</b>
+                    Le
                     <b>{{ post.created_at }}</b>
                 </p>
             </div>
@@ -28,8 +28,6 @@ Blog
             <div>
                 <p class="post-meta">
                 <p>{{ currentComment.message }}</p>
-                Rédigé par
-                <b>{{ currentComment.users_id }}</b>
                 Le
                 <b>{{ currentComment.created_at }}</b>
                 </p>
@@ -41,6 +39,6 @@ Blog
             <hr class="my-4" />
         </div>
     </div>
-    <button type="button"><a href="index.php?action=addComment">Ajouter un commentaire</a> </button>
+    <button type="button"><a href="index.php?action=addComment&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
 </div>
 {% endblock content %}
