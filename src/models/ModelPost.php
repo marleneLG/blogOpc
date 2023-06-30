@@ -11,7 +11,10 @@ class ModelPost
 {
     public function getPosts()
     {
-        $statement = SPDO::getInstance()->query('SELECT * FROM posts');
+        $query = 'SELECT p.*, u.username
+        FROM posts p
+            JOIN users u on u.id = p.users_id';
+        $statement = SPDO::getInstance()->query($query);
         $statement->execute();
         $posts = $statement->fetchAll();
         return $posts;
@@ -19,24 +22,29 @@ class ModelPost
 
     public function getPostById($idPost)
     {
-        $statement = SPDO::getInstance()->prepare('SELECT * FROM posts WHERE id = ?');
+        $statement = SPDO::getInstance()->prepare('SELECT p.*, u.username
+        FROM posts p
+            JOIN users u on u.id = p.users_id');
         $statement->execute([$idPost]);
-        return $statement->fetchAll();
+        
+        return $statement->fetch();
     }
 
     public function createPostModel($postContent)
     {
-        // var_dump('je passe ici');
+       
         // Ecriture de la requête
         // https://www.php.net/manual/fr/pdo.prepare.php
         $sqlQuery = 'INSERT INTO posts(title, message, created_at, updated_at, users_id) VALUES (:title, :message, :created_at, :updated_at, :users_id)';
 
         // Préparation insertion en base
-        $insertPost = $postContent->prepare($sqlQuery);
+        $insertPost = SPDO::getInstance()->prepare($sqlQuery);
 
         // Exécution
-        $insertPost->execute($postContent);
+        $isInserted = $insertPost->execute($postContent);
 
-        var_dump($insertPost);
+        //var_dump($isInserted, $insertPost);
+        var_dump($isInserted, $insertPost->errorCode());
+        
     }
 }

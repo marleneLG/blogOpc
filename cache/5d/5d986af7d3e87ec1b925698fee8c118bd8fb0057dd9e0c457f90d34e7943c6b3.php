@@ -74,7 +74,7 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php#competences\">Compétences</a>
                     </li>
-                    <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php?action=post\">Blog</a>
+                    <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php?action=posts\">Blog</a>
                     </li>
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php#contact\">Contact</a>
                     </li>
@@ -222,7 +222,7 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php#competences\">Compétences</a>
                     </li>
-                    <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php?action=post\">Blog</a>
+                    <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php?action=posts\">Blog</a>
                     </li>
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php#contact\">Contact</a>
                     </li>

@@ -51,7 +51,7 @@ if (isset($_GET['action'])) {
 */
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
-        case 'post':
+        case 'posts':
             $postController = new PostController($twig);
             $postController->index();
             break;
@@ -81,7 +81,7 @@ if (isset($_GET['action'])) {
             break;
         case 'addComment':
             $commentController = new CommentController($twig);
-            $commentController->addComment();
+            $commentController->addComment($_GET['id']);
             break;
         case 'comment':
             $commentController = new CommentController($twig);
