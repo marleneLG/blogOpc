@@ -61,14 +61,20 @@ class __TwigTemplate_7c2c077994a48c1f7273c5a93d9cdcb24e26ac184b7315f2cbd9d22ca30
 <div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
+            <p>";
+        // line 12
+        echo twig_escape_filter($this->env, ($context["error"] ?? null), "html", null, true);
+        echo "</p>
             <form method=\"post\" action=\"index.php?action=createPost\">
                 <div class=\"mb-3\">
                     <label for=\"title\" class=\"form-label\">Titre</label>
-                    <input type=\"text\" class=\"form-control\" name=\"title\" required />
+                    <input placeholder=\"Champs obligatoire avec maximum 45 caractères\" type=\"text\" class=\"form-control\"
+                        name=\"title\" minlength=\"1\" maxlength=\"45\" required />
                 </div>
                 <div class=\"mb-3\">
                     <label for=\"message\" class=\"form-label\">Contenu du billet</label>
-                    <textarea name=\"message\" class=\"form-control\" rows=\"15\" required></textarea>
+                    <textarea placeholder=\"Champs obligatoire avec maximum 20000 caractères\" name=\"message\"
+                        class=\"form-control\" rows=\"15\" minlength=\"1\" maxlength=\"20000\" required></textarea>
                 </div>
                 <button type=\"submit\" class=\"btn btn-primary\">Envoyer</button>
             </form>
@@ -90,7 +96,7 @@ class __TwigTemplate_7c2c077994a48c1f7273c5a93d9cdcb24e26ac184b7315f2cbd9d22ca30
 
     public function getDebugInfo()
     {
-        return array (  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  66 => 12,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -106,14 +112,17 @@ Blog
 <div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
+            <p>{{error}}</p>
             <form method=\"post\" action=\"index.php?action=createPost\">
                 <div class=\"mb-3\">
                     <label for=\"title\" class=\"form-label\">Titre</label>
-                    <input type=\"text\" class=\"form-control\" name=\"title\" required />
+                    <input placeholder=\"Champs obligatoire avec maximum 45 caractères\" type=\"text\" class=\"form-control\"
+                        name=\"title\" minlength=\"1\" maxlength=\"45\" required />
                 </div>
                 <div class=\"mb-3\">
                     <label for=\"message\" class=\"form-label\">Contenu du billet</label>
-                    <textarea name=\"message\" class=\"form-control\" rows=\"15\" required></textarea>
+                    <textarea placeholder=\"Champs obligatoire avec maximum 20000 caractères\" name=\"message\"
+                        class=\"form-control\" rows=\"15\" minlength=\"1\" maxlength=\"20000\" required></textarea>
                 </div>
                 <button type=\"submit\" class=\"btn btn-primary\">Envoyer</button>
             </form>

@@ -75,9 +75,9 @@ class __TwigTemplate_89441cc8bd669fc2a08b838b2d6772e1ae78f704fc0c56d25d1c45ffb27
                     Posté par
                     <b href=\"#!\">";
         // line 18
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "users_id", [], "any", false, false, false, 18), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "username", [], "any", false, false, false, 18), "html", null, true);
         echo "</b>
-
+                    Le
                     <b>";
         // line 20
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "created_at", [], "any", false, false, false, 20), "html", null, true);
@@ -105,15 +105,10 @@ class __TwigTemplate_89441cc8bd669fc2a08b838b2d6772e1ae78f704fc0c56d25d1c45ffb27
             // line 30
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "message", [], "any", false, false, false, 30), "html", null, true);
             echo "</p>
-                Rédigé par
-                <b>";
-            // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "users_id", [], "any", false, false, false, 32), "html", null, true);
-            echo "</b>
                 Le
                 <b>";
-            // line 34
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "created_at", [], "any", false, false, false, 34), "html", null, true);
+            // line 32
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "created_at", [], "any", false, false, false, 32), "html", null, true);
             echo "</b>
                 </p>
             </div>
@@ -124,12 +119,15 @@ class __TwigTemplate_89441cc8bd669fc2a08b838b2d6772e1ae78f704fc0c56d25d1c45ffb27
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['currentComment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
+        // line 38
         echo "            <!-- Divider-->
             <hr class=\"my-4\" />
         </div>
     </div>
-    <button type=\"button\"><a href=\"index.php?action=addComment\">Ajouter un commentaire</a> </button>
+    <button type=\"button\"><a href=\"index.php?action=displayCommentForm&amp;id=";
+        // line 42
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 42), "html", null, true);
+        echo "\">Ajouter un commentaire</a> </button>
 </div>
 ";
     }
@@ -146,7 +144,7 @@ class __TwigTemplate_89441cc8bd669fc2a08b838b2d6772e1ae78f704fc0c56d25d1c45ffb27
 
     public function getDebugInfo()
     {
-        return array (  128 => 40,  116 => 34,  111 => 32,  106 => 30,  99 => 27,  95 => 26,  91 => 25,  83 => 20,  78 => 18,  72 => 15,  68 => 14,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  129 => 42,  123 => 38,  111 => 32,  106 => 30,  99 => 27,  95 => 26,  91 => 25,  83 => 20,  78 => 18,  72 => 15,  68 => 14,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -168,8 +166,8 @@ Blog
                 <h3 class=\"post-subtitle\">{{ post.message }}</h3>
                 <p class=\"post-meta\">
                     Posté par
-                    <b href=\"#!\">{{ post.users_id }}</b>
-
+                    <b href=\"#!\">{{ post.username }}</b>
+                    Le
                     <b>{{ post.created_at }}</b>
                 </p>
             </div>
@@ -181,8 +179,6 @@ Blog
             <div>
                 <p class=\"post-meta\">
                 <p>{{ currentComment.message }}</p>
-                Rédigé par
-                <b>{{ currentComment.users_id }}</b>
                 Le
                 <b>{{ currentComment.created_at }}</b>
                 </p>
@@ -194,7 +190,7 @@ Blog
             <hr class=\"my-4\" />
         </div>
     </div>
-    <button type=\"button\"><a href=\"index.php?action=addComment\">Ajouter un commentaire</a> </button>
+    <button type=\"button\"><a href=\"index.php?action=displayCommentForm&amp;id={{ post.id }}\">Ajouter un commentaire</a> </button>
 </div>
 {% endblock content %}", "comment.twig", "C:\\Users\\marle\\Desktop\\OPC\\projet5blog\\blogOpc\\templates\\comment.twig");
     }

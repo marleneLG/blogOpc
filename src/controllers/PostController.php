@@ -51,8 +51,8 @@ class PostController
         $message = htmlspecialchars($_POST['message']);
         $modelUser = new ModelUser();
         $userId = $modelUser->getUserByEmail($_SESSION['logged_user'])['id'];
-        // var_dump($userId);
-        // si $userId null ??
+
+        //Todo si $userId null ??
         $postContent = [
             'title' => $title,
             'message' => $message,
@@ -64,7 +64,7 @@ class PostController
         $post = new ModelPost();
         $post->createPostModel($postContent);
 
-        echo $this->twig->render('posts.twig');
+        $this->index();
     }
 
     public function edit($id)

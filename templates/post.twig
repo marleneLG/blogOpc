@@ -39,6 +39,7 @@ Blog
             <hr class="my-4" />
         </div>
     </div>
-    <button type="button"><a href="index.php?action=addComment&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
+    <h1>{{post.id}}</h1>
+    <button type="button"><a href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
 </div>
 {% endblock content %}

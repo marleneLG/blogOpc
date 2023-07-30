@@ -18,13 +18,20 @@ class ModelComment
         return $comments;
     }
 
+    public function getCommentById($idComment)
+    {
+        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE id = "' . $idComment . '";');
+        $statement->execute([$idComment]);
+        $comment = $statement->fetch();
+        return $comment;
+    }
+
     public function getCommentsIsApprovedFromPostId($postId)
     {
-        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND posts_id = "' . $postId . '";'); // TODO : prepare
+        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND posts_id = "' . $postId . '";');
         $statement->execute();
         $comments = $statement->fetchAll();
 
-        //var_dump($comments);
         return $comments;
     }
 
@@ -38,16 +45,31 @@ class ModelComment
 
     public function createCommentModel($commentContent)
     {
-        // Ecriture de la requête
-        // https://www.php.net/manual/fr/pdo.prepare.php
-        $sqlQuery = 'INSERT INTO comments(message, created_at, updated_at, is_approved, users_id, posts_id) VALUES (:message, :created_at, :updated_at, :is_approved, :users_id, :posts_id)';
+        $sqlQuery = 'INSERT INTO comments(message, created_at, updated_at, posts_id) VALUES (:message, :created_at, :updated_at, :posts_id)';
 
-        // Préparation insertion en base
-        $insertComment = $commentContent->prepare($sqlQuery);
+        $insertComment = SPDO::getInstance()->prepare($sqlQuery);
+        $result = $insertComment->execute($commentContent);
 
-        // Exécution
-        $insertComment->execute($commentContent);
+        if ($result === false) {
+            var_dump('oops', $insertComment->errorCode(), $insertComment->errorInfo());
+        }
+    }
 
-        var_dump($insertComment);
+    public function validationCommentModel($commentId)
+    {
+        $sqlQuery = 'UPDATE comments SET is_approved = 1 WHERE id = :id';
+        $insertComment = SPDO::getInstance()->prepare($sqlQuery);
+        $isInserted = $insertComment->execute([':id' =>$commentId]);
+        if ($isInserted === false) {
+            var_dump('oops', $insertComment->errorCode(), $insertComment->errorInfo());
+        }
+    }
+
+    public function deleteCommentModel($commentId)
+    {
+        $statement = SPDO::getInstance()->prepare('DELETE FROM comments WHERE id="' . $commentId . '";');
+        $statement->execute([
+            $commentId
+        ]);
     }
 }

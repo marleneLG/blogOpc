@@ -22,17 +22,20 @@ class ModelPost
 
     public function getPostById($idPost)
     {
-        $statement = SPDO::getInstance()->prepare('SELECT p.*, u.username
-        FROM posts p
-            JOIN users u on u.id = p.users_id');
+        $statement = SPDO::getInstance()->prepare(
+            'SELECT p.*, u.username
+             FROM posts p 
+                JOIN users u on u.id = p.users_id 
+             WHERE p.id = ?;'
+        );
         $statement->execute([$idPost]);
-        
+
         return $statement->fetch();
     }
 
     public function createPostModel($postContent)
     {
-       
+
         // Ecriture de la requête
         // https://www.php.net/manual/fr/pdo.prepare.php
         $sqlQuery = 'INSERT INTO posts(title, message, created_at, updated_at, users_id) VALUES (:title, :message, :created_at, :updated_at, :users_id)';
@@ -43,8 +46,8 @@ class ModelPost
         // Exécution
         $isInserted = $insertPost->execute($postContent);
 
-        //var_dump($isInserted, $insertPost);
-        var_dump($isInserted, $insertPost->errorCode());
-        
+        if ($isInserted === false) {
+            var_dump('oops', $insertPost->errorCode(), $insertPost->errorInfo());
+        }
     }
 }
