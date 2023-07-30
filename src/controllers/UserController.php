@@ -3,6 +3,7 @@
 namespace Marle\BlogOpc\controllers;
 
 use Marle\BlogOpc\models\ModelUser;
+use Marle\BlogOpc\models\ModelComment;
 
 class UserController
 {
@@ -61,7 +62,10 @@ class UserController
 
     public function management()
     {
-        echo $this->twig->render('admin.twig');
+        $comment = new ModelComment();
+        $allComments = $comment->getCommentsIsNotApproved();
+        $numberComments = count($allComments);
+        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'number' => $numberComments]);
     }
 
     public function show($id)

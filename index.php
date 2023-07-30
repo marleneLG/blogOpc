@@ -75,17 +75,29 @@ if (isset($_GET['action'])) {
             $userController = new UserController($twig);
             $userController->management();
             break;
+        case 'validationComment':
+            $userController = new CommentController($twig);
+            $userController->updateComment($_GET['commentId']);
+            break;
         case 'createPost':
             $postController = new PostController($twig);
             $postController->createPost();
             break;
-        case 'addComment':
+        case 'displayCommentForm':
             $commentController = new CommentController($twig);
-            $commentController->addComment($_GET['id']);
+            $commentController->displayCommentForm($_GET['id']);
             break;
-        case 'comment':
+        case 'post':
             $commentController = new CommentController($twig);
             $commentController->index($_GET['id']);
+            break;
+        case 'createComment':
+            $commentController = new CommentController($twig);
+            $commentController->createComment();
+            break;
+        case 'deleteComment':
+            $commentController = new CommentController($twig);
+            $commentController->deleteComment($_GET['commentId']);
             break;
         default:
             $homeController = new HomeController($twig);

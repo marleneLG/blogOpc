@@ -62,9 +62,23 @@ class __TwigTemplate_03a4fa77b00cd8e23a011fb56a72cc810477bb114e545aaced0cbf9d6ce
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <form method=\"post\" action=\"index.php?action=createComment\">
-                <div class=\"mb-3\">
+                ";
+        // line 13
+        if (($context["errorMessage"] ?? null)) {
+            // line 14
+            echo "                <div class=\"alert alert-danger\">";
+            echo twig_escape_filter($this->env, ($context["errorMessage"] ?? null), "html", null, true);
+            echo "</div>
+                ";
+        }
+        // line 16
+        echo "                <div class=\"mb-3\">
                     <label for=\"message\" class=\"form-label\">Contenu du commentaire</label>
                     <textarea name=\"message\" class=\"form-control\" rows=\"15\" required></textarea>
+                    <input type=\"hidden\" name=\"postId\" value=";
+        // line 19
+        echo twig_escape_filter($this->env, ($context["postId"] ?? null), "html", null, true);
+        echo ">
                 </div>
                 <button type=\"submit\" class=\"btn btn-primary\">Envoyer</button>
             </form>
@@ -86,7 +100,7 @@ class __TwigTemplate_03a4fa77b00cd8e23a011fb56a72cc810477bb114e545aaced0cbf9d6ce
 
     public function getDebugInfo()
     {
-        return array (  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  80 => 19,  75 => 16,  69 => 14,  67 => 13,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -103,9 +117,13 @@ Blog
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <form method=\"post\" action=\"index.php?action=createComment\">
+                {% if errorMessage %}
+                <div class=\"alert alert-danger\">{{errorMessage}}</div>
+                {% endif %}
                 <div class=\"mb-3\">
                     <label for=\"message\" class=\"form-label\">Contenu du commentaire</label>
                     <textarea name=\"message\" class=\"form-control\" rows=\"15\" required></textarea>
+                    <input type=\"hidden\" name=\"postId\" value={{postId}}>
                 </div>
                 <button type=\"submit\" class=\"btn btn-primary\">Envoyer</button>
             </form>
