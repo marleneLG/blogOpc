@@ -6,6 +6,7 @@ use Marle\BlogOpc\controllers\HomeController;
 use Marle\BlogOpc\controllers\PostController;
 use Marle\BlogOpc\controllers\UserController;
 use Marle\BlogOpc\controllers\CommentController;
+use Marle\BlogOpc\controllers\FormController;
 use \Twig\Loader\FilesystemLoader;
 use \Twig\Environment;
 
@@ -76,8 +77,8 @@ if (isset($_GET['action'])) {
             $userController->management();
             break;
         case 'validationComment':
-            $userController = new CommentController($twig);
-            $userController->updateComment($_GET['commentId']);
+            $commentController = new CommentController($twig);
+            $commentController->updateComment($_GET['commentId']);
             break;
         case 'createPost':
             $postController = new PostController($twig);
@@ -98,6 +99,10 @@ if (isset($_GET['action'])) {
         case 'deleteComment':
             $commentController = new CommentController($twig);
             $commentController->deleteComment($_GET['commentId']);
+            break;
+        case 'sendForm':
+            $formController = new FormController($twig);
+            $formController->sendForm();
             break;
         default:
             $homeController = new HomeController($twig);
