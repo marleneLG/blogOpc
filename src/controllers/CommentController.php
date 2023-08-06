@@ -81,7 +81,7 @@ class CommentController
         $comment = new ModelComment();
         $comment->createCommentModel($commentContent);
 
-        echo $this->index($postIdFromDb); // TODO :"posts" déjà récupérés, à optimiser ?
+        echo $this->index($postIdFromDb);
     }
 
     public function updateComment($commentId)

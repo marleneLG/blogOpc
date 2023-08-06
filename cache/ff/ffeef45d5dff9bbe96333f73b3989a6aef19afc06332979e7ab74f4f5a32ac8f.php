@@ -59,11 +59,31 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
         // line 8
         echo "<section id=\"who\" class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
-        <div class=\"col-md-10 col-lg-8 col-xl-7\">
+        ";
+        // line 10
+        if (($context["errorMessage"] ?? null)) {
+            // line 11
+            echo "        <div class=\"alert alert-danger\">";
+            echo twig_escape_filter($this->env, ($context["errorMessage"] ?? null), "html", null, true);
+            echo "</div>
+        ";
+        }
+        // line 13
+        echo "        ";
+        if (($context["validMessage"] ?? null)) {
+            // line 14
+            echo "        <div class=\"alert alert-danger\">";
+            echo twig_escape_filter($this->env, ($context["validMessage"] ?? null), "html", null, true);
+            echo "</div>
+        ";
+        }
+        // line 16
+        echo "        <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <h1 id=\"title\"><img id=\"icon\" src=\"assets\\img\\femmes.png\"></img><br> Qui suis-je?</h1>
             <h2>Marlène Le Guern <img id=\"icon\" src=\"assets\\img\\1638086413186.jpg\" alt=\"picture\"></h2>
             <p>
-                je m'appelle Marlène Le Guern et après plusieurs années en tant que soignante j'ai souhaité changer de situation professionnelle
+                je m'appelle Marlène Le Guern et après plusieurs années en tant que soignante j'ai souhaité changer de
+                situation professionnelle
                 et me diriger vers un métier plus cérébral. Le hasard faisant parfois bien les choses je suis tombée
                 sur le métier de développeur web et me suis lancée dans cette aventure avec un plaisir incroyable. J'ai
                 commencé par
@@ -113,7 +133,7 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                 Github
             </p>
             <br>
-        <a id=\"cv\" href=\"assets\\img\\cv-template.pdf\">Accès à mon CV en format PDF</a>
+            <a id=\"cv\" href=\"assets\\img\\cv-template.pdf\">Accès à mon CV en format PDF</a>
         </div>
     </div>
     <hr class=\"my-4\" />
@@ -128,7 +148,8 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                 Ce blog va vous présenter différents articles auxquels vous pourrez participer par l'échange de
                 commentaires.
             </p>
-            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=post\"> cliquer ici pour vous rendre sur le blog</a>
+            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=post\"> cliquer ici pour vous rendre sur le
+                blog</a>
         </div>
     </div>
     <hr class=\"my-4\" />
@@ -138,47 +159,42 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
 <section id=\"contact\" class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
-            <h1 id=\"title\"><img id=\"icon\" src=\"assets\\img\\lettre.png\" ></img><br>Contact</h1>
+            <h1 id=\"title\"><img id=\"icon\" src=\"assets\\img\\lettre.png\"></img><br>Contact</h1>
             <p>
                 Vous voulez entrer en contact? Remplissez le formulaire ci-dessous pour envoyer un message et je vous
                 répondrai dès que
                 possible!
             </p>
             <div class=\"my-5\">
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
-                <form id=\"contactForm\" data-sb-form-api-token=\"API_TOKEN\">
+                <form id=\"contactForm\" method=\"post\" action=\"index.php?action=sendForm\">
                     <div class=\"form-floating\">
-                        <input class=\"form-control\" id=\"name\" type=\"text\" placeholder=\"Enter your name...\"
+                        <input class=\"form-control\" name=\"name\" id=\"name\" type=\"text\" placeholder=\"Enter your name...\"
                             data-sb-validations=\"required\" />
                         <label for=\"name\">Name</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"name:required\">A name is required.</div>
                     </div>
                     <div class=\"form-floating\">
-                        <input class=\"form-control\" id=\"email\" type=\"email\" placeholder=\"Enter your email...\"
-                            data-sb-validations=\"required,email\" />
+                        <input class=\"form-control\" name=\"email\" id=\"email\" type=\"email\"
+                            placeholder=\"Enter your email...\" data-sb-validations=\"required,email\" />
                         <label for=\"email\">Email address</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"email:required\">An email is required.</div>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"email:email\">Email is not valid.</div>
                     </div>
                     <div class=\"form-floating\">
-                        <input class=\"form-control\" id=\"phone\" type=\"tel\" placeholder=\"Enter your phone number...\"
-                            data-sb-validations=\"required\" />
+                        <input class=\"form-control\" name=\"phone\" id=\"phone\" type=\"tel\"
+                            placeholder=\"Enter your phone number...\" data-sb-validations=\"required\" />
                         <label for=\"phone\">Phone Number</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"phone:required\">A phone number is required.
                         </div>
                     </div>
                     <div class=\"form-floating\">
-                        <textarea class=\"form-control\" id=\"message\" placeholder=\"Enter your message here...\"
-                            style=\"height: 12rem\" data-sb-validations=\"required\"></textarea>
+                        <textarea class=\"form-control\" name=\"message\" id=\"message\"
+                            placeholder=\"Enter your message here...\" style=\"height: 12rem\"
+                            data-sb-validations=\"required\"></textarea>
                         <label for=\"message\">Message</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"message:required\">A message is required.</div>
                     </div>
+                    <button type=\"submit\">Envoyer</button>
                     <br />
                     <!-- Submit success message-->
                     <!---->
@@ -201,9 +217,9 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                         <div class=\"text-center text-danger mb-3\">Error sending message!</div>
                     </div>
                     <!-- Submit Button-->
-                    <button class=\"btn btn-primary text-uppercase disabled\" id=\"submitButton\"
-                        type=\"submit\">Send</button>
-                </form>
+                    ";
+        // line 157
+        echo "                </form>
             </div>
         </div>
     </div>
@@ -223,7 +239,7 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
 
     public function getDebugInfo()
     {
-        return array (  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  222 => 157,  81 => 16,  75 => 14,  72 => 13,  66 => 11,  64 => 10,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -237,11 +253,18 @@ Blog
 {% block content %}
 <section id=\"who\" class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
+        {% if errorMessage %}
+        <div class=\"alert alert-danger\">{{errorMessage}}</div>
+        {% endif %}
+        {% if validMessage %}
+        <div class=\"alert alert-danger\">{{validMessage}}</div>
+        {% endif %}
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <h1 id=\"title\"><img id=\"icon\" src=\"assets\\img\\femmes.png\"></img><br> Qui suis-je?</h1>
             <h2>Marlène Le Guern <img id=\"icon\" src=\"assets\\img\\1638086413186.jpg\" alt=\"picture\"></h2>
             <p>
-                je m'appelle Marlène Le Guern et après plusieurs années en tant que soignante j'ai souhaité changer de situation professionnelle
+                je m'appelle Marlène Le Guern et après plusieurs années en tant que soignante j'ai souhaité changer de
+                situation professionnelle
                 et me diriger vers un métier plus cérébral. Le hasard faisant parfois bien les choses je suis tombée
                 sur le métier de développeur web et me suis lancée dans cette aventure avec un plaisir incroyable. J'ai
                 commencé par
@@ -291,7 +314,7 @@ Blog
                 Github
             </p>
             <br>
-        <a id=\"cv\" href=\"assets\\img\\cv-template.pdf\">Accès à mon CV en format PDF</a>
+            <a id=\"cv\" href=\"assets\\img\\cv-template.pdf\">Accès à mon CV en format PDF</a>
         </div>
     </div>
     <hr class=\"my-4\" />
@@ -306,7 +329,8 @@ Blog
                 Ce blog va vous présenter différents articles auxquels vous pourrez participer par l'échange de
                 commentaires.
             </p>
-            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=post\"> cliquer ici pour vous rendre sur le blog</a>
+            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=post\"> cliquer ici pour vous rendre sur le
+                blog</a>
         </div>
     </div>
     <hr class=\"my-4\" />
@@ -316,47 +340,42 @@ Blog
 <section id=\"contact\" class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
-            <h1 id=\"title\"><img id=\"icon\" src=\"assets\\img\\lettre.png\" ></img><br>Contact</h1>
+            <h1 id=\"title\"><img id=\"icon\" src=\"assets\\img\\lettre.png\"></img><br>Contact</h1>
             <p>
                 Vous voulez entrer en contact? Remplissez le formulaire ci-dessous pour envoyer un message et je vous
                 répondrai dès que
                 possible!
             </p>
             <div class=\"my-5\">
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
-                <form id=\"contactForm\" data-sb-form-api-token=\"API_TOKEN\">
+                <form id=\"contactForm\" method=\"post\" action=\"index.php?action=sendForm\">
                     <div class=\"form-floating\">
-                        <input class=\"form-control\" id=\"name\" type=\"text\" placeholder=\"Enter your name...\"
+                        <input class=\"form-control\" name=\"name\" id=\"name\" type=\"text\" placeholder=\"Enter your name...\"
                             data-sb-validations=\"required\" />
                         <label for=\"name\">Name</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"name:required\">A name is required.</div>
                     </div>
                     <div class=\"form-floating\">
-                        <input class=\"form-control\" id=\"email\" type=\"email\" placeholder=\"Enter your email...\"
-                            data-sb-validations=\"required,email\" />
+                        <input class=\"form-control\" name=\"email\" id=\"email\" type=\"email\"
+                            placeholder=\"Enter your email...\" data-sb-validations=\"required,email\" />
                         <label for=\"email\">Email address</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"email:required\">An email is required.</div>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"email:email\">Email is not valid.</div>
                     </div>
                     <div class=\"form-floating\">
-                        <input class=\"form-control\" id=\"phone\" type=\"tel\" placeholder=\"Enter your phone number...\"
-                            data-sb-validations=\"required\" />
+                        <input class=\"form-control\" name=\"phone\" id=\"phone\" type=\"tel\"
+                            placeholder=\"Enter your phone number...\" data-sb-validations=\"required\" />
                         <label for=\"phone\">Phone Number</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"phone:required\">A phone number is required.
                         </div>
                     </div>
                     <div class=\"form-floating\">
-                        <textarea class=\"form-control\" id=\"message\" placeholder=\"Enter your message here...\"
-                            style=\"height: 12rem\" data-sb-validations=\"required\"></textarea>
+                        <textarea class=\"form-control\" name=\"message\" id=\"message\"
+                            placeholder=\"Enter your message here...\" style=\"height: 12rem\"
+                            data-sb-validations=\"required\"></textarea>
                         <label for=\"message\">Message</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"message:required\">A message is required.</div>
                     </div>
+                    <button type=\"submit\">Envoyer</button>
                     <br />
                     <!-- Submit success message-->
                     <!---->
@@ -379,8 +398,8 @@ Blog
                         <div class=\"text-center text-danger mb-3\">Error sending message!</div>
                     </div>
                     <!-- Submit Button-->
-                    <button class=\"btn btn-primary text-uppercase disabled\" id=\"submitButton\"
-                        type=\"submit\">Send</button>
+                    {# <button class=\"btn btn-primary text-uppercase disabled\" id=\"submitButton\"
+                        type=\"submit\">Send</button> #}
                 </form>
             </div>
         </div>
