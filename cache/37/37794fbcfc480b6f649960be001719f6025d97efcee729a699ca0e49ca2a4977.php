@@ -62,44 +62,46 @@ class __TwigTemplate_ecf665974a9556b0b89ad1d7e5062a6d9fd7e0559a3bba58013a84215b8
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <div class=\"post-preview\">
-                <h2 class=\"post-title\">Commentaires en attente de validation</h2>
-                <h3 class=\"post-subtitle\">Vous avez ";
+                ";
         // line 14
+        echo "                <h1 class=\"post-subtitle\">Vous avez ";
         echo twig_escape_filter($this->env, ($context["number"] ?? null), "html", null, true);
-        echo " commentaire(s) en attente</h3>
+        echo " commentaire(s) en attente</h1>
                 ";
         // line 15
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["comments"]);
         foreach ($context['_seq'] as $context["_key"] => $context["comments"]) {
             // line 16
-            echo "                <p> ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "message", [], "any", false, false, false, 16), "html", null, true);
-            echo ", ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "id", [], "any", false, false, false, 16), "html", null, true);
-            echo " </p>
-                <button type=\"button\"><a href=\"index.php?action=validationComment&amp;commentId=";
+            echo "
+                <p><b>Que souhaitez vous faire de ce commentaire ? : </b> <br> ";
             // line 17
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "id", [], "any", false, false, false, 17), "html", null, true);
-            echo "\">Valider le commentaire</a> </button>
-                <button type=\"button\"><a href=\"index.php?action=deleteComment&amp;commentId=";
-            // line 18
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "id", [], "any", false, false, false, 18), "html", null, true);
-            echo "\">Supprimer le commentaire</a> </button>
-                <input type=\"hidden\" name=\"commentId\" value=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "message", [], "any", false, false, false, 17), "html", null, true);
+            echo " </p>
+                <button type=\"button\" class=\"btn btn-outline-success\"><a
+                        href=\"index.php?action=validationComment&amp;commentId=";
             // line 19
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "id", [], "any", false, false, false, 19), "html", null, true);
+            echo "\">Valider le
+                        commentaire</a> </button>
+                <button type=\"button\" class=\"btn btn-outline-danger\"><a
+                        href=\"index.php?action=deleteComment&amp;commentId=";
+            // line 22
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "id", [], "any", false, false, false, 22), "html", null, true);
+            echo "\">Supprimer le
+                        commentaire</a> </button>
+                <input type=\"hidden\" name=\"commentId\" value=";
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comments"], "id", [], "any", false, false, false, 24), "html", null, true);
             echo ">
+                <hr class=\"my-4\" />
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comments'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 21
-        echo "                <p class=\"post-meta\">
-                    Commentaires en attente...
-                </p>
-            </div>
+        // line 27
+        echo "            </div>
             <hr class=\"my-4\" />
         </div>
     </div>
@@ -119,7 +121,7 @@ class __TwigTemplate_ecf665974a9556b0b89ad1d7e5062a6d9fd7e0559a3bba58013a84215b8
 
     public function getDebugInfo()
     {
-        return array (  99 => 21,  91 => 19,  87 => 18,  83 => 17,  76 => 16,  72 => 15,  68 => 14,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  104 => 27,  95 => 24,  90 => 22,  84 => 19,  79 => 17,  76 => 16,  72 => 15,  67 => 14,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -136,17 +138,20 @@ Blog
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <div class=\"post-preview\">
-                <h2 class=\"post-title\">Commentaires en attente de validation</h2>
-                <h3 class=\"post-subtitle\">Vous avez {{number}} commentaire(s) en attente</h3>
+                {# <h2 class=\"post-title\">Commentaires en attente de validation</h2> #}
+                <h1 class=\"post-subtitle\">Vous avez {{number}} commentaire(s) en attente</h1>
                 {% for comments in comments %}
-                <p> {{comments.message}}, {{comments.id}} </p>
-                <button type=\"button\"><a href=\"index.php?action=validationComment&amp;commentId={{ comments.id }}\">Valider le commentaire</a> </button>
-                <button type=\"button\"><a href=\"index.php?action=deleteComment&amp;commentId={{ comments.id }}\">Supprimer le commentaire</a> </button>
+
+                <p><b>Que souhaitez vous faire de ce commentaire ? : </b> <br> {{comments.message}} </p>
+                <button type=\"button\" class=\"btn btn-outline-success\"><a
+                        href=\"index.php?action=validationComment&amp;commentId={{ comments.id }}\">Valider le
+                        commentaire</a> </button>
+                <button type=\"button\" class=\"btn btn-outline-danger\"><a
+                        href=\"index.php?action=deleteComment&amp;commentId={{ comments.id }}\">Supprimer le
+                        commentaire</a> </button>
                 <input type=\"hidden\" name=\"commentId\" value={{comments.id}}>
+                <hr class=\"my-4\" />
                 {% endfor %}
-                <p class=\"post-meta\">
-                    Commentaires en attente...
-                </p>
             </div>
             <hr class=\"my-4\" />
         </div>

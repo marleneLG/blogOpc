@@ -56,9 +56,9 @@ if (isset($_GET['action'])) {
             $postController = new PostController($twig);
             $postController->index();
             break;
-        case 'addPost':
+        case 'displayFormPost':
             $postController = new PostController($twig);
-            $postController->addPost();
+            $postController->displayFormPost();
             break;
         case 'connect':
             $userController = new UserController($twig);
@@ -83,6 +83,14 @@ if (isset($_GET['action'])) {
         case 'createPost':
             $postController = new PostController($twig);
             $postController->createPost();
+            break;
+        case 'deletePost':
+            $postController = new PostController($twig);
+            $postController->deletePost($_GET['postId']);
+            break;
+        case 'displayUpdatePost':
+            $postController = new PostController($twig);
+            $postController->displayUpdatePost($_GET['postId']);
             break;
         case 'displayCommentForm':
             $commentController = new CommentController($twig);

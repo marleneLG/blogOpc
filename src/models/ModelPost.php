@@ -50,4 +50,22 @@ class ModelPost
             var_dump('oops', $insertPost->errorCode(), $insertPost->errorInfo());
         }
     }
+
+    public function updatePostModel($postId)
+    {
+        $sqlQuery = 'UPDATE posts SET title = :title, message = :message WHERE id = :id';
+        $insertPost = SPDO::getInstance()->prepare($sqlQuery);
+        $isInserted = $insertPost->execute([':id' => $postId]);
+        if ($isInserted === false) {
+            var_dump('oops', $insertPost->errorCode(), $insertPost->errorInfo());
+        }
+    }
+
+    public function deletePostModel($postId)
+    {
+        $statement = SPDO::getInstance()->prepare('DELETE FROM posts WHERE id="' . $postId . '";');
+        $statement->execute([
+            $postId
+        ]);
+    }
 }

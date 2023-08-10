@@ -32,7 +32,7 @@ class PostController
         echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
     }
 
-    public function addPost()
+    public function displayFormPost()
     {
         //dirige vers formulaire d'ajout d'un post
         echo $this->twig->render('createPost.twig');
@@ -65,6 +65,32 @@ class PostController
         $post->createPostModel($postContent);
 
         $this->index();
+    }
+
+    //récupérer le posts et renvoyer vers formulaire de création
+    public function displayUpdatePost($postId)
+    {
+        $postInstance = new ModelPost();
+        $post = $postInstance->getPostById($postId);
+        $postInstance->updatePostModel($postId);
+        echo $this->twig->render('createPost.twig', ['postId' => $post['id']]);
+    }
+
+    public function deletePost($postId)
+    {
+        $modelUser = new ModelUser();
+        $userId = $modelUser->getUserByEmail($_SESSION['logged_user'])['id'];
+        if (!isset($userId)) {
+            $errorMessage = 'Vous ne pouvez pas supprimer ce post car vous n\'avez pas les droits';
+            echo $this->twig->render('home.twig', ['errorMessage' => $errorMessage]);
+        }
+        $postInstance = new ModelPost();
+        $allPosts = $postInstance->getPosts();
+        $post = $postInstance->getPostById($postId);
+        $postInstance->deletePostModel($postId);
+        var_dump($postId);
+
+        echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
     }
 
     public function edit($id)
