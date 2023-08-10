@@ -8,11 +8,27 @@ Blog
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
+        {% if session.logged_user is defined %}
+        <div class="d-flex flex-row">
+            <div>
+                <button type="button" class="btn btn-outline-danger btn-sm"><a
+                        href="index.php?action=deletePost&amp;postId={{ post.id }}">Supprimer le
+                        post</a> </button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-warning btn-sm"><a
+                        href="index.php?action=displayUpdatePost&amp;postId={{ post.id }}">Modifier le
+                        post</a>
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        <hr class="my-4" />
         <div class="col-md-10 col-lg-8 col-xl-7">
             <!-- Post preview-->
             <div class="post-preview">
-                <h2 class="post-title">{{ post.title }}</h2>
-                <h3 class="post-subtitle">{{ post.message }}</h3>
+                <h1 class="post-title">{{ post.title }}</h1>
+                <p class="post-subtitle">{{ post.message }}</p>
                 <p class="post-meta">
                     Posté par
                     <b href="#!">{{ post.username }}</b>
@@ -22,7 +38,10 @@ Blog
             </div>
             <!-- Divider-->
             <hr class="my-4" />
-            <h1>{{'Commentaires'}}</h1>
+        </div>
+
+        <div>
+            <span class="comment">{{'Commentaires'}}</span>
             {% for currentComment in comments %}
             <p>{{comments.message}}</p>
             <div>
@@ -39,7 +58,7 @@ Blog
             <hr class="my-4" />
         </div>
     </div>
-    <h1>{{post.id}}</h1>
-    <button type="button"><a href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
+    <button type="button" class="btn btn-secondary mb-2"><a
+            href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
 </div>
 {% endblock content %}

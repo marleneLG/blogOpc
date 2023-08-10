@@ -60,55 +60,85 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
         echo "<!-- Main Content-->
 <div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
+        ";
+        // line 11
+        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user", [], "any", true, true, false, 11)) {
+            // line 12
+            echo "        <div class=\"d-flex flex-row\">
+            <div>
+                <button type=\"button\" class=\"btn btn-outline-danger btn-sm\"><a
+                        href=\"index.php?action=deletePost&amp;postId=";
+            // line 15
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 15), "html", null, true);
+            echo "\">Supprimer le
+                        post</a> </button>
+            </div>
+            <div>
+                <button type=\"button\" class=\"btn btn-outline-warning btn-sm\"><a
+                        href=\"index.php?action=displayUpdatePost&amp;postId=";
+            // line 20
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 20), "html", null, true);
+            echo "\">Modifier le
+                        post</a>
+                </button>
+            </div>
+        </div>
+        ";
+        }
+        // line 26
+        echo "        <hr class=\"my-4\" />
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <!-- Post preview-->
             <div class=\"post-preview\">
-                <h2 class=\"post-title\">";
-        // line 14
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "title", [], "any", false, false, false, 14), "html", null, true);
-        echo "</h2>
-                <h3 class=\"post-subtitle\">";
-        // line 15
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "message", [], "any", false, false, false, 15), "html", null, true);
-        echo "</h3>
+                <h1 class=\"post-title\">";
+        // line 30
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "title", [], "any", false, false, false, 30), "html", null, true);
+        echo "</h1>
+                <p class=\"post-subtitle\">";
+        // line 31
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "message", [], "any", false, false, false, 31), "html", null, true);
+        echo "</p>
                 <p class=\"post-meta\">
                     Posté par
                     <b href=\"#!\">";
-        // line 18
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "username", [], "any", false, false, false, 18), "html", null, true);
+        // line 34
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "username", [], "any", false, false, false, 34), "html", null, true);
         echo "</b>
                     Le
                     <b>";
-        // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "created_at", [], "any", false, false, false, 20), "html", null, true);
+        // line 36
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "created_at", [], "any", false, false, false, 36), "html", null, true);
         echo "</b>
                 </p>
             </div>
             <!-- Divider-->
             <hr class=\"my-4\" />
-            <h1>";
-        // line 25
+        </div>
+
+        <div>
+            <span class=\"comment\">";
+        // line 44
         echo "Commentaires";
-        echo "</h1>
+        echo "</span>
             ";
-        // line 26
+        // line 45
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["comments"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["currentComment"]) {
-            // line 27
+            // line 46
             echo "            <p>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["comments"] ?? null), "message", [], "any", false, false, false, 27), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["comments"] ?? null), "message", [], "any", false, false, false, 46), "html", null, true);
             echo "</p>
             <div>
                 <p class=\"post-meta\">
                 <p>";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "message", [], "any", false, false, false, 30), "html", null, true);
+            // line 49
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "message", [], "any", false, false, false, 49), "html", null, true);
             echo "</p>
                 Le
                 <b>";
-            // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "created_at", [], "any", false, false, false, 32), "html", null, true);
+            // line 51
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["currentComment"], "created_at", [], "any", false, false, false, 51), "html", null, true);
             echo "</b>
                 </p>
             </div>
@@ -119,18 +149,15 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['currentComment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 38
+        // line 57
         echo "            <!-- Divider-->
             <hr class=\"my-4\" />
         </div>
     </div>
-    <h1>";
-        // line 42
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 42), "html", null, true);
-        echo "</h1>
-    <button type=\"button\"><a href=\"index.php?action=displayCommentForm&amp;id=";
-        // line 43
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 43), "html", null, true);
+    <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
+            href=\"index.php?action=displayCommentForm&amp;id=";
+        // line 62
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 62), "html", null, true);
         echo "\">Ajouter un commentaire</a> </button>
 </div>
 ";
@@ -148,7 +175,7 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
 
     public function getDebugInfo()
     {
-        return array (  133 => 43,  129 => 42,  123 => 38,  111 => 32,  106 => 30,  99 => 27,  95 => 26,  91 => 25,  83 => 20,  78 => 18,  72 => 15,  68 => 14,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  160 => 62,  153 => 57,  141 => 51,  136 => 49,  129 => 46,  125 => 45,  121 => 44,  110 => 36,  105 => 34,  99 => 31,  95 => 30,  89 => 26,  80 => 20,  72 => 15,  67 => 12,  65 => 11,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -163,11 +190,27 @@ Blog
 <!-- Main Content-->
 <div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
+        {% if session.logged_user is defined %}
+        <div class=\"d-flex flex-row\">
+            <div>
+                <button type=\"button\" class=\"btn btn-outline-danger btn-sm\"><a
+                        href=\"index.php?action=deletePost&amp;postId={{ post.id }}\">Supprimer le
+                        post</a> </button>
+            </div>
+            <div>
+                <button type=\"button\" class=\"btn btn-outline-warning btn-sm\"><a
+                        href=\"index.php?action=displayUpdatePost&amp;postId={{ post.id }}\">Modifier le
+                        post</a>
+                </button>
+            </div>
+        </div>
+        {% endif %}
+        <hr class=\"my-4\" />
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <!-- Post preview-->
             <div class=\"post-preview\">
-                <h2 class=\"post-title\">{{ post.title }}</h2>
-                <h3 class=\"post-subtitle\">{{ post.message }}</h3>
+                <h1 class=\"post-title\">{{ post.title }}</h1>
+                <p class=\"post-subtitle\">{{ post.message }}</p>
                 <p class=\"post-meta\">
                     Posté par
                     <b href=\"#!\">{{ post.username }}</b>
@@ -177,7 +220,10 @@ Blog
             </div>
             <!-- Divider-->
             <hr class=\"my-4\" />
-            <h1>{{'Commentaires'}}</h1>
+        </div>
+
+        <div>
+            <span class=\"comment\">{{'Commentaires'}}</span>
             {% for currentComment in comments %}
             <p>{{comments.message}}</p>
             <div>
@@ -194,8 +240,8 @@ Blog
             <hr class=\"my-4\" />
         </div>
     </div>
-    <h1>{{post.id}}</h1>
-    <button type=\"button\"><a href=\"index.php?action=displayCommentForm&amp;id={{ post.id }}\">Ajouter un commentaire</a> </button>
+    <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
+            href=\"index.php?action=displayCommentForm&amp;id={{ post.id }}\">Ajouter un commentaire</a> </button>
 </div>
 {% endblock content %}", "post.twig", "C:\\Users\\marle\\Desktop\\OPC\\projet5blog\\blogOpc\\templates\\post.twig");
     }
