@@ -38,7 +38,7 @@ class PostController
         echo $this->twig->render('createPost.twig');
     }
 
-    public function createPost()
+    public function validForm()
     {
         $isTitleValid = isset($_POST['title']) && trim($_POST['title']) != '' && strlen($_POST['title']) < self::MAX_POST_TITLE_LENGTH;
         $isMessageValid = isset($_POST['message']) && trim($_POST['message']) != '' && strlen($_POST['message']) < self::MAX_POST_CONTENT_LENGTH;
@@ -46,6 +46,27 @@ class PostController
         if (!$isTitleValid || !$isMessageValid) {
             echo $this->twig->render('createPost.twig', ['error' => 'Merci de remplir le formulaire']);
         }
+    }
+
+    // public function postContent($postContent) {
+    //     $title = htmlspecialchars($_POST['title']);
+    //     $message = htmlspecialchars($_POST['message']);
+    //     $modelUser = new ModelUser();
+    //     $userId = $modelUser->getUserByEmail($_SESSION['logged_user'])['id'];
+
+    //     //Todo si $userId null ??
+    //     $postContent = [
+    //         'title' => $title,
+    //         'message' => $message,
+    //         'created_at' => $this->datetime,
+    //         'updated_at' => $this->datetime,
+    //         'users_id' => $userId
+    //     ];
+    // }
+
+    public function createPost()
+    {
+        $this->validForm();
 
         $title = htmlspecialchars($_POST['title']);
         $message = htmlspecialchars($_POST['message']);
@@ -72,8 +93,27 @@ class PostController
     {
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
-        $postInstance->updatePostModel($postId);
-        echo $this->twig->render('createPost.twig', ['postId' => $post['id']]);
+        echo $this->twig->render('editPost.twig', ['post' => $post]);
+    }
+
+    public function editPost()
+    {
+        $this->validForm();
+
+        $title = htmlspecialchars($_POST['title']);
+        $message = htmlspecialchars($_POST['message']);
+
+        //Todo si $userId null ??
+        $postContent = [
+            'id' => $_POST['postId'],
+            'title' => $title,
+            'message' => $message,
+            'updated_at' => $this->datetime,
+        ];
+
+        $postInstance = new ModelPost();
+        $postInstance->updatePostModel($postContent);
+        $this->index();
     }
 
     public function deletePost($postId)
@@ -91,10 +131,5 @@ class PostController
         var_dump($postId);
 
         echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
-    }
-
-    public function edit($id)
-    {
-        //
     }
 }
