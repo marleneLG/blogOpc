@@ -76,7 +76,9 @@ class __TwigTemplate_7c2c077994a48c1f7273c5a93d9cdcb24e26ac184b7315f2cbd9d22ca30
                     <textarea placeholder=\"Champs obligatoire avec maximum 20000 caractères\" name=\"message\"
                         class=\"form-control\" rows=\"15\" minlength=\"1\" maxlength=\"20000\" required></textarea>
                 </div>
-                <button type=\"submit\" class=\"btn btn-primary\">Envoyer</button>
+                ";
+        // line 25
+        echo "                <button type=\"submit\" class=\"btn btn-primary\">Envoyer</button>
             </form>
         </div>
     </div>
@@ -96,7 +98,7 @@ class __TwigTemplate_7c2c077994a48c1f7273c5a93d9cdcb24e26ac184b7315f2cbd9d22ca30
 
     public function getDebugInfo()
     {
-        return array (  66 => 12,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  81 => 25,  66 => 12,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -124,6 +126,7 @@ Blog
                     <textarea placeholder=\"Champs obligatoire avec maximum 20000 caractères\" name=\"message\"
                         class=\"form-control\" rows=\"15\" minlength=\"1\" maxlength=\"20000\" required></textarea>
                 </div>
+                {# <input type=\"hidden\" name=\"postId\" value={{postId}}> #}
                 <button type=\"submit\" class=\"btn btn-primary\">Envoyer</button>
             </form>
         </div>

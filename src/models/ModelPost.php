@@ -51,11 +51,11 @@ class ModelPost
         }
     }
 
-    public function updatePostModel($postId)
+    public function updatePostModel($postContent)
     {
-        $sqlQuery = 'UPDATE posts SET title = :title, message = :message WHERE id = :id';
+        $sqlQuery = 'UPDATE posts SET title = :title, message = :message, updated_at = :updated_at  WHERE id = :id';
         $insertPost = SPDO::getInstance()->prepare($sqlQuery);
-        $isInserted = $insertPost->execute([':id' => $postId]);
+        $isInserted = $insertPost->execute($postContent);
         if ($isInserted === false) {
             var_dump('oops', $insertPost->errorCode(), $insertPost->errorInfo());
         }

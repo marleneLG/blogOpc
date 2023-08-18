@@ -194,6 +194,10 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                         <label for=\"message\">Message</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"message:required\">A message is required.</div>
                     </div>
+                    <input type=\"hidden\" name=\"postId\" value=";
+        // line 132
+        echo twig_escape_filter($this->env, ($context["postId"] ?? null), "html", null, true);
+        echo ">
                     <button type=\"submit\">Envoyer</button>
                     <br />
                     <!-- Submit success message-->
@@ -218,7 +222,7 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                     </div>
                     <!-- Submit Button-->
                     ";
-        // line 157
+        // line 158
         echo "                </form>
             </div>
         </div>
@@ -239,7 +243,7 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
 
     public function getDebugInfo()
     {
-        return array (  222 => 157,  81 => 16,  75 => 14,  72 => 13,  66 => 11,  64 => 10,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  226 => 158,  199 => 132,  81 => 16,  75 => 14,  72 => 13,  66 => 11,  64 => 10,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -375,6 +379,7 @@ Blog
                         <label for=\"message\">Message</label>
                         <div class=\"invalid-feedback\" data-sb-feedback=\"message:required\">A message is required.</div>
                     </div>
+                    <input type=\"hidden\" name=\"postId\" value={{postId}}>
                     <button type=\"submit\">Envoyer</button>
                     <br />
                     <!-- Submit success message-->
