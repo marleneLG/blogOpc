@@ -72,9 +72,9 @@ if (isset($_GET['action'])) {
             $userController = new UserController($twig);
             $userController->disconnect();
             break;
-        case 'management':
-            $userController = new UserController($twig);
-            $userController->management();
+        case 'managementComment':
+            $commentController = new commentController($twig);
+            $commentController->displayManagementComment();
             break;
         case 'validationComment':
             $commentController = new CommentController($twig);

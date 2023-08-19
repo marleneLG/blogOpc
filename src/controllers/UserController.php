@@ -60,14 +60,6 @@ class UserController
         echo $this->twig->render('home.twig');
     }
 
-    public function management()
-    {
-        $comment = new ModelComment();
-        $allComments = $comment->getCommentsIsNotApproved();
-        $numberComments = count($allComments);
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'number' => $numberComments]);
-    }
-
     public function show($id)
     {
         //

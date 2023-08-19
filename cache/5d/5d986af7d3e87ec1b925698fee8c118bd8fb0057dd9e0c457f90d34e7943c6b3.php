@@ -84,7 +84,7 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
         if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user", [], "any", true, true, false, 45)) {
             // line 46
             echo "                    <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
-                            href=\"index.php?action=management\">Gestion</a></li>
+                            href=\"index.php?action=managementComment\">Gestion</a></li>
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php?action=disconnect\">Déconnexion</a></li>
                     ";
@@ -229,7 +229,7 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
                     {# si admin #}
                     {% if session.logged_user is defined %}
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
-                            href=\"index.php?action=management\">Gestion</a></li>
+                            href=\"index.php?action=managementComment\">Gestion</a></li>
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php?action=disconnect\">Déconnexion</a></li>
                     {% endif %}
