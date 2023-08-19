@@ -112,10 +112,10 @@ if (isset($_GET['action'])) {
             $commentController = new CommentController($twig);
             $commentController->deleteComment($_GET['commentId']);
             break;
-            case 'sendForm':
-                $formController = new FormController($twig);
-                $formController->sendForm();
-                break;
+        case 'sendForm':
+            $formController = new FormController($twig);
+            $formController->sendForm();
+            break;
         default:
             $homeController = new HomeController($twig);
             $homeController->index();

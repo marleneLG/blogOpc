@@ -7,8 +7,10 @@ Blog
 {% block content %}
 <section id="who" class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-        {% if errorMessage %}
-        <div class="alert alert-danger">{{errorMessage}}</div>
+        {% if errorMessages %}
+            {% for errorMessage in errorMessages %}
+            <div class="alert alert-danger">{{errorMessage}}</div>
+            {% endfor %}
         {% endif %}
         {% if validMessage %}
         <div class="alert alert-danger">{{validMessage}}</div>

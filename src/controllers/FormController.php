@@ -25,38 +25,34 @@ class FormController
         $email = htmlspecialchars($_POST['email']); // required
         $phone = htmlspecialchars($_POST['phone']); // not required
         $message = htmlspecialchars($_POST['message']); // required
-        $errorMessage = "";
+        $errorMessages = [];
         $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
         $email_to = "marlene.mlg53@gmail.com";
         $validMessage = 'Message bien envoyé';
 
-
         if (!preg_match($email_exp, $email) || !$isEmailValid) {
-            $errorMessage .=
-                'L\'adresse e-mail que vous avez entrée ne semble pas être valide.<br />';
+            $errorMessages[] = 'L\'adresse e-mail que vous avez entrée ne semble pas être valide';
         }
 
         // Prend les caractères alphanumériques + le point et le tiret 6
         $string_exp = "/^[A-Za-z0-9 .'-]+$/";
 
         if (!preg_match($string_exp, $name) || !$isNameValid) {
-            $errorMessage .=
-                "Le nom entré est incorrect.\r\n";
+            $errorMessages[] = "Le nom entré est incorrect.";
         }
 
         if (strlen($message) < 2 || !$isMessageValid) {
-            $errorMessage .=
-                "Le message entré est incorrect.\r\n";
+            $errorMessages[] = "Le message entré est incorrect.";
         }
 
         if (!$isPhoneValid) {
-            $errorMessage .= "Le téléphone est incorrect.\r\n";
+            $errorMessages[] = "Le téléphone est incorrect.";
         }
 
-        if ($errorMessage !== '') {
-            echo $this->twig->render('home.twig', ['errorMessage' => $errorMessage]);
-            return;
-        }
+        // if ($errorMessages !== '') {
+        //     echo $this->twig->render('home.twig', ['errorMessages' => $errorMessages]);
+        //     return;
+        // }
 
         $email_message = "Détail.\n\n";
         $email_message .= "Nom: " . $name . "\n";
@@ -65,14 +61,10 @@ class FormController
         $email_message .= "Telephone: " . $phone . "\n";
         $email_message .= "message: " . $message . "\n";
 
-        // create email headers
-        $headers = 'From: ' . $email . "\r\n" .
-            'Reply-To: ' . $email . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($email_to, $email_message, $headers);
-        // $headers = "From:" . $nom . " " . $email;
-        if (mail($email_to, $email_message, $headers)) {
-             var_dump('mail envoyé');
+        $headers = "From:marlene.mlg53@gmail.com " . "\r\n";
+        $subject = 'Formulaire de contact';
+        if (mail($email_to, $subject, $email_message, $headers)) {
+            var_dump('mail envoyé');
         } else {
             var_dump('et non !');
         }
