@@ -30,10 +30,6 @@ class FormController
         $email_to = "marlene.mlg53@gmail.com";
         $validMessage = 'Message bien envoyé';
 
-        //$errorMessage[] = 54;
-        //array_push($errorMessage, 54);
-
-
         if (!preg_match($email_exp, $email) || !$isEmailValid) {
             $errorMessages[] = 'L\'adresse e-mail que vous avez entrée ne semble pas être valide';
         }
@@ -53,10 +49,10 @@ class FormController
             $errorMessages[] = "Le téléphone est incorrect.";
         }
 
-        if ($errorMessages !== '') {
-            echo $this->twig->render('home.twig', ['errorMessages' => $errorMessages]);
-            return;
-        }
+        // if ($errorMessages !== '') {
+        //     echo $this->twig->render('home.twig', ['errorMessages' => $errorMessages]);
+        //     return;
+        // }
 
         $email_message = "Détail.\n\n";
         $email_message .= "Nom: " . $name . "\n";
@@ -65,13 +61,9 @@ class FormController
         $email_message .= "Telephone: " . $phone . "\n";
         $email_message .= "message: " . $message . "\n";
 
-        // create email headers
-        $headers = 'From: ' . $email . "\r\n" .
-            'Reply-To: ' . $email . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($email_to, $email_message, $headers);
-        // $headers = "From:" . $nom . " " . $email;
-        if (mail($email_to, $email_message, $headers)) {
+        $headers = "From:marlene.mlg53@gmail.com " . "\r\n";
+        $subject = 'Formulaire de contact';
+        if (mail($email_to, $subject, $email_message, $headers)) {
             var_dump('mail envoyé');
         } else {
             var_dump('et non !');
