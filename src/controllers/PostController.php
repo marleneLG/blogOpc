@@ -2,7 +2,7 @@
 
 namespace Marle\BlogOpc\controllers;
 
-session_start();
+// session_start();
 
 use Marle\BlogOpc\models\ModelPost;
 use Marle\BlogOpc\models\ModelUser;

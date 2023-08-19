@@ -2,7 +2,7 @@
 
 namespace Marle\BlogOpc\controllers;
 
-session_start();
+// session_start();
 
 use Marle\BlogOpc\models\ModelComment;
 use Marle\BlogOpc\models\ModelPost;
@@ -84,12 +84,19 @@ class CommentController
         echo $this->index($postIdFromDb);
     }
 
-    public function updateComment($commentId)
+    public function displayManagementComment()
     {
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsNotApproved();
+        $numberComments = count($allComments);
+        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'number' => $numberComments]);
+    }
+
+    public function updateComment($commentId)
+    {
+        $comment = new ModelComment();
         $comment->validationCommentModel($commentId);
-        echo $this->twig->render('admin.twig', ['comments' => $allComments]);
+        $this->displayManagementComment();
     }
 
     public function deleteComment($commentId)
