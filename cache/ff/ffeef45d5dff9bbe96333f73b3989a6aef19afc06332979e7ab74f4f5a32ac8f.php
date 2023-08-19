@@ -159,7 +159,7 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                 Ce blog va vous présenter différents articles auxquels vous pourrez participer par l'échange de
                 commentaires.
             </p>
-            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=post\"> cliquer ici pour vous rendre sur le
+            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=posts\"> cliquer ici pour vous rendre sur le
                 blog</a>
         </div>
     </div>
@@ -342,7 +342,7 @@ Blog
                 Ce blog va vous présenter différents articles auxquels vous pourrez participer par l'échange de
                 commentaires.
             </p>
-            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=post\"> cliquer ici pour vous rendre sur le
+            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=posts\"> cliquer ici pour vous rendre sur le
                 blog</a>
         </div>
     </div>
