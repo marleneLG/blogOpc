@@ -12,8 +12,8 @@ class HomeController
         $this->twig = $twig;
     }
 
-    public function index()
+    public function index($errorMessage = null)
     {
-        echo $this->twig->render('home.twig');
+        echo $this->twig->render('home.twig', [$errorMessage]);
     }
 }

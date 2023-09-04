@@ -13,16 +13,13 @@ class ModelUser
     {
         $statement = SPDO::getInstance()->query('SELECT * FROM users');
         $statement->execute();
-        $users = $statement->fetchAll();
-        return $users;
+        return $statement->fetchAll();
     }
 
-    public function getUserByEmail()
+    public function getUserByEmail($email)
     {
-        $statement = SPDO::getInstance()->query('SELECT id FROM users');
-        // $statement->prepare('SELECT id FROM users');
-        $statement->execute();
-        $user = $statement->fetch();
-        return $user;
+        $statement = SPDO::getInstance()->prepare('SELECT id FROM users WHERE email = :email');
+        $statement->execute([':email' => $email]);
+        return $statement->fetch();
     }
 }

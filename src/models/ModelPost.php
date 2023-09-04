@@ -13,7 +13,8 @@ class ModelPost
     {
         $query = 'SELECT p.*, u.username
         FROM posts p
-            JOIN users u on u.id = p.users_id';
+        JOIN users u on u.id = p.users_id
+        ORDER BY updated_at DESC';
         $statement = SPDO::getInstance()->query($query);
         $statement->execute();
         $posts = $statement->fetchAll();
