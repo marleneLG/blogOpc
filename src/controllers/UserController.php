@@ -35,7 +35,7 @@ class UserController
             $modelUser = new ModelUser();
             $userId = $modelUser->getUserByEmail($_SESSION['logged_user_by_email'])['id'];
         }
-        
+
         if (!$isSessionSet || !isset($userId)) {
             $homeInstance = new HomeController($this->twig);
             $homeInstance->index('Vous n\'avez pas les droits');
@@ -72,6 +72,7 @@ class UserController
             if (!$isFound) {
                 echo $this->twig->render('connexion.twig');
             }
+            header("Refresh:0; url=index.php");
         }
     }
 
@@ -79,6 +80,7 @@ class UserController
     {
         unset($_SESSION['logged_user_by_email']);
         echo $this->twig->render('home.twig');
+        header("Refresh:0; url=index.php");
     }
 
     public function show($id)
