@@ -6,7 +6,7 @@ namespace Marle\BlogOpc\controllers;
 
 use Marle\BlogOpc\models\ModelComment;
 use Marle\BlogOpc\models\ModelPost;
-use Marle\BlogOpc\models\ModelUser;
+use Marle\BlogOpc\controllers\UserController;
 
 class CommentController
 {
@@ -35,6 +35,12 @@ class CommentController
         echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent]);
 
         // echo $this->twig->render('post.twig', ['post' => $post, 'comments' => $allComments]);
+    }
+
+    public function isAuthorized()
+    {
+        $userInstance = new UserController($this->twig);
+        return $userInstance->hasRole();
     }
 
     public function displayCommentForm($postId, $errorMessage = null)
@@ -86,6 +92,8 @@ class CommentController
 
     public function displayManagementComment()
     {
+        if ($this->isAuthorized() === false) return;
+
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsNotApproved();
         $numberComments = count($allComments);
@@ -94,6 +102,8 @@ class CommentController
 
     public function updateComment($commentId)
     {
+        if ($this->isAuthorized() === false) return;
+
         $comment = new ModelComment();
         $comment->validationCommentModel($commentId);
         $this->displayManagementComment();
@@ -101,13 +111,8 @@ class CommentController
 
     public function deleteComment($commentId)
     {
-        $modelUser = new ModelUser();
-        $userId = $modelUser->getUserByEmail($_SESSION['logged_user'])['id'];
-        var_dump($userId);
-        if (!isset($userId)) {
-            $errorMessage = 'Vous ne pouvez pas supprimer ce commentaire car vous n\'avez pas les droits';
-            echo $this->twig->render('home.twig', $errorMessage);
-        }
+        if ($this->isAuthorized() === false) return;
+
         $commentInstance = new ModelComment();
         $comment = $commentInstance->getCommentById($commentId);
         $allComments = $commentInstance->getCommentsIsNotApproved();

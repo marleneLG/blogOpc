@@ -6,6 +6,7 @@ namespace Marle\BlogOpc\controllers;
 
 use Marle\BlogOpc\models\ModelPost;
 use Marle\BlogOpc\models\ModelUser;
+use Marle\BlogOpc\controllers\UserController;
 
 class PostController
 {
@@ -32,14 +33,24 @@ class PostController
         echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
     }
 
+    public function isAuthorized()
+    {
+        $userInstance = new UserController($this->twig);
+        return $userInstance->hasRole();
+    }
+
     public function displayFormPost()
     {
+        if ($this->isAuthorized() === false) return;
+
         //dirige vers formulaire d'ajout d'un post
         echo $this->twig->render('createPost.twig');
     }
 
     public function validForm()
     {
+        if ($this->isAuthorized() === false) return;
+
         $isTitleValid = isset($_POST['title']) && trim($_POST['title']) != '' && strlen($_POST['title']) < self::MAX_POST_TITLE_LENGTH;
         $isMessageValid = isset($_POST['message']) && trim($_POST['message']) != '' && strlen($_POST['message']) < self::MAX_POST_CONTENT_LENGTH;
 
@@ -48,30 +59,16 @@ class PostController
         }
     }
 
-    // public function postContent($postContent) {
-    //     $title = htmlspecialchars($_POST['title']);
-    //     $message = htmlspecialchars($_POST['message']);
-    //     $modelUser = new ModelUser();
-    //     $userId = $modelUser->getUserByEmail($_SESSION['logged_user'])['id'];
-
-    //     //Todo si $userId null ??
-    //     $postContent = [
-    //         'title' => $title,
-    //         'message' => $message,
-    //         'created_at' => $this->datetime,
-    //         'updated_at' => $this->datetime,
-    //         'users_id' => $userId
-    //     ];
-    // }
-
     public function createPost()
     {
+        if ($this->isAuthorized() === false) return;
+
         $this->validForm();
 
         $title = htmlspecialchars($_POST['title']);
         $message = htmlspecialchars($_POST['message']);
         $modelUser = new ModelUser();
-        $userId = $modelUser->getUserByEmail($_SESSION['logged_user'])['id'];
+        $userId = $modelUser->getUserByEmail($_SESSION['logged_user_by_email'])['id'];
 
         //Todo si $userId null ??
         $postContent = [
@@ -91,6 +88,8 @@ class PostController
     //récupérer le posts et renvoyer vers formulaire de création
     public function displayUpdatePost($postId)
     {
+        if ($this->isAuthorized() === false) return;
+
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
         echo $this->twig->render('editPost.twig', ['post' => $post]);
@@ -98,6 +97,8 @@ class PostController
 
     public function editPost()
     {
+        if ($this->isAuthorized() === false) return;
+
         $this->validForm();
 
         $title = htmlspecialchars($_POST['title']);
@@ -118,17 +119,11 @@ class PostController
 
     public function deletePost($postId)
     {
-        $modelUser = new ModelUser();
-        $userId = $modelUser->getUserByEmail($_SESSION['logged_user'])['id'];
-        if (!isset($userId)) {
-            $errorMessage = 'Vous ne pouvez pas supprimer ce post car vous n\'avez pas les droits';
-            echo $this->twig->render('home.twig', ['errorMessage' => $errorMessage]);
-        }
+        if ($this->isAuthorized() === false) return;
+
         $postInstance = new ModelPost();
         $allPosts = $postInstance->getPosts();
-        $post = $postInstance->getPostById($postId);
         $postInstance->deletePostModel($postId);
-        var_dump($postId);
 
         echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
     }

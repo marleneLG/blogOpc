@@ -4,6 +4,7 @@ namespace Marle\BlogOpc\controllers;
 
 use Marle\BlogOpc\models\ModelUser;
 use Marle\BlogOpc\models\ModelComment;
+use Marle\BlogOpc\controllers\HomeController;
 
 class UserController
 {
@@ -21,6 +22,26 @@ class UserController
     public function index()
     {
         echo $this->twig->render('connexion.twig');
+    }
+
+    public function hasRole()
+    {
+        //fonction qui vérifie si droit ou pas
+        //si pas admin = error message 
+        $isSessionSet = true;
+        if (!isset($_SESSION['logged_user_by_email'])) $isSessionSet = false;
+
+        if ($isSessionSet) {
+            $modelUser = new ModelUser();
+            $userId = $modelUser->getUserByEmail($_SESSION['logged_user_by_email'])['id'];
+        }
+        
+        if (!$isSessionSet || !isset($userId)) {
+            $homeInstance = new HomeController($this->twig);
+            $homeInstance->index('Vous n\'avez pas les droits');
+            return false;
+        }
+        return true;
     }
 
     public function login()
@@ -41,7 +62,7 @@ class UserController
                 $isPasswordvalid = password_verify($password, $currentUser['password']);
                 if ($currentUser['email'] === $email && $isPasswordvalid) {
                     //on garde en mémoire l'utilisateur
-                    $_SESSION['logged_user'] = $email;
+                    $_SESSION['logged_user_by_email'] = $email;
                     // si oui, affichage de la page admin
                     echo $this->twig->render('home.twig');
                     $isFound = true;
@@ -56,7 +77,7 @@ class UserController
 
     public function disconnect()
     {
-        session_unset();
+        unset($_SESSION['logged_user_by_email']);
         echo $this->twig->render('home.twig');
     }
 
