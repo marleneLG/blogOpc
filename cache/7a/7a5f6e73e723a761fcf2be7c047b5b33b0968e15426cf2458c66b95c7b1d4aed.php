@@ -62,7 +62,7 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         ";
         // line 11
-        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user", [], "any", true, true, false, 11)) {
+        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_by_email", [], "any", true, true, false, 11)) {
             // line 12
             echo "        <div class=\"d-flex flex-row\">
             <div>
@@ -190,7 +190,7 @@ Blog
 <!-- Main Content-->
 <div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
-        {% if session.logged_user is defined %}
+        {% if session.logged_user_by_email is defined %}
         <div class=\"d-flex flex-row\">
             <div>
                 <button type=\"button\" class=\"btn btn-outline-danger btn-sm\"><a
