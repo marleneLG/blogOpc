@@ -59,7 +59,7 @@ class __TwigTemplate_ecf665974a9556b0b89ad1d7e5062a6d9fd7e0559a3bba58013a84215b8
         // line 8
         echo "
 <div class=\"container px-4 px-lg-5\">
-    <div class=\"row gx-4 gx-lg-5 justify-content-center\">
+    <div class=\"row gx-4 gx-lg-5\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <div class=\"post-preview\">
                 ";
@@ -135,7 +135,7 @@ Blog
 {% block content %}
 
 <div class=\"container px-4 px-lg-5\">
-    <div class=\"row gx-4 gx-lg-5 justify-content-center\">
+    <div class=\"row gx-4 gx-lg-5\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <div class=\"post-preview\">
                 {# <h2 class=\"post-title\">Commentaires en attente de validation</h2> #}
