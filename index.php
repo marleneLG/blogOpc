@@ -64,6 +64,26 @@ if (isset($_GET['action'])) {
             $userController = new UserController($twig);
             $userController->index();
             break;
+        case 'displayFormUser':
+            $userController = new UserController($twig);
+            $userController->displayFormUser();
+            break;
+        case 'createUser':
+            $userController = new UserController($twig);
+            $userController->createUser();
+            break;
+        case 'validationUser':
+            $userController = new UserController($twig);
+            $userController->updateUser($_GET['userId']);
+            break;
+        case 'validationUserAdmin':
+            $userController = new UserController($twig);
+            $userController->updateUserAdmin($_GET['userId']);
+            break;
+        case 'validationUserSimple':
+            $userController = new UserController($twig);
+            $userController->updateUserSimple($_GET['userId']);
+            break;
         case 'login':
             $userController = new UserController($twig);
             $userController->login();

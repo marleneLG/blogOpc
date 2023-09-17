@@ -61,6 +61,9 @@ class __TwigTemplate_3a94b30ed09337c0e80b4e6868923b9166649f6d209b01f441ab9f9c6db
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <div class=\"my-5\">
+                <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
+                        href=\"index.php?action=displayFormUser\">S'inscrire</a></button>
+                <p>Ou</p>
                 <p>Se Connecter</p>
                 <form method=\"post\" action=\"index.php?action=login\">
                     <div>
@@ -105,6 +108,9 @@ Blog
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <div class=\"my-5\">
+                <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
+                        href=\"index.php?action=displayFormUser\">S'inscrire</a></button>
+                <p>Ou</p>
                 <p>Se Connecter</p>
                 <form method=\"post\" action=\"index.php?action=login\">
                     <div>

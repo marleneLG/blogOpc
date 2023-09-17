@@ -8,7 +8,7 @@ Blog
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-        {% if session.logged_user_by_email is defined %}
+        {% if session.logged_user_email is defined %}
         <div class="d-flex flex-row">
             <div>
                 <button type="button" class="btn btn-outline-danger btn-sm"><a
@@ -58,7 +58,10 @@ Blog
             <hr class="my-4" />
         </div>
     </div>
-    <button type="button" class="btn btn-secondary mb-2"><a
-            href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
+    {% if session.logged_user_email is defined and session.user_is_validated == 1 %}    
+            <button type="button" class="btn btn-secondary mb-2"><a
+                    href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
+    {% endif %}
+
 </div>
 {% endblock content %}
