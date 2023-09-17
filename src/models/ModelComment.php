@@ -28,7 +28,7 @@ class ModelComment
 
     public function getCommentsIsApprovedFromPostId($postId)
     {
-        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND posts_id = "' . $postId . '";');
+        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND post_id = "' . $postId . '";');
         $statement->execute();
         $comments = $statement->fetchAll();
 
@@ -45,7 +45,7 @@ class ModelComment
 
     public function createCommentModel($commentContent)
     {
-        $sqlQuery = 'INSERT INTO comments(message, created_at, updated_at, posts_id) VALUES (:message, :created_at, :updated_at, :posts_id)';
+        $sqlQuery = 'INSERT INTO comments(message, created_at, updated_at, post_id) VALUES (:message, :created_at, :updated_at, :post_id)';
 
         $insertComment = SPDO::getInstance()->prepare($sqlQuery);
         $result = $insertComment->execute($commentContent);

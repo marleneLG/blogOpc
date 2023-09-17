@@ -2,6 +2,8 @@
 
 namespace Marle\BlogOpc\controllers;
 
+use Marle\BlogOpc\models\ModelUser;
+
 class HomeController
 {
     private $twig;
@@ -14,6 +16,8 @@ class HomeController
 
     public function index($errorMessage = null)
     {
-        echo $this->twig->render('home.twig', [$errorMessage]);
+        $user = new ModelUser();
+        $allUsers = $user->getUsers();
+        echo $this->twig->render('home.twig', [$errorMessage, 'users' => $allUsers]);
     }
 }

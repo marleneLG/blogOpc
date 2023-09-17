@@ -6,6 +6,7 @@ namespace Marle\BlogOpc\controllers;
 
 use Marle\BlogOpc\models\ModelComment;
 use Marle\BlogOpc\models\ModelPost;
+use Marle\BlogOpc\models\ModelUser;
 use Marle\BlogOpc\controllers\UserController;
 
 class CommentController
@@ -32,7 +33,9 @@ class CommentController
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsApprovedFromPostId($postId);
         $postContent = $this->getPostById($postId);
-        echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent]);
+        $user = new ModelUser();
+        $allUsers = $user->getUsers();
+        echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]);
 
         // echo $this->twig->render('post.twig', ['post' => $post, 'comments' => $allComments]);
     }
@@ -82,7 +85,7 @@ class CommentController
             'message' => $message,
             'created_at' => $this->datetime,
             'updated_at' => $this->datetime,
-            'posts_id' => $postIdFromDb
+            'post_id' => $postIdFromDb
         ];
         $comment = new ModelComment();
         $comment->createCommentModel($commentContent);
@@ -95,9 +98,11 @@ class CommentController
         if ($this->isAuthorized() === false) return;
 
         $comment = new ModelComment();
+        $user = new ModelUser();
+        $allUsers = $user->getUsers();
         $allComments = $comment->getCommentsIsNotApproved();
         $numberComments = count($allComments);
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'number' => $numberComments]);
+        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers ,'number' => $numberComments]);
     }
 
     public function updateComment($commentId)

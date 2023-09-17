@@ -68,7 +68,7 @@ class PostController
         $title = htmlspecialchars($_POST['title']);
         $message = htmlspecialchars($_POST['message']);
         $modelUser = new ModelUser();
-        $userId = $modelUser->getUserByEmail($_SESSION['logged_user_by_email'])['id'];
+        $userId = $modelUser->getUserByEmail($_SESSION['logged_user_email'])['id'];
 
         //Todo si $userId null ??
         $postContent = [
@@ -76,7 +76,7 @@ class PostController
             'message' => $message,
             'created_at' => $this->datetime,
             'updated_at' => $this->datetime,
-            'users_id' => $userId
+            'user_id' => $userId
         ];
 
         $post = new ModelPost();

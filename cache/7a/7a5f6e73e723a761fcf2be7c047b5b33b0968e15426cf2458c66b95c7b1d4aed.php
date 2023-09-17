@@ -62,7 +62,7 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         ";
         // line 11
-        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_by_email", [], "any", true, true, false, 11)) {
+        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_email", [], "any", true, true, false, 11)) {
             // line 12
             echo "        <div class=\"d-flex flex-row\">
             <div>
@@ -154,11 +154,19 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
             <hr class=\"my-4\" />
         </div>
     </div>
-    <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
-            href=\"index.php?action=displayCommentForm&amp;id=";
-        // line 62
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 62), "html", null, true);
-        echo "\">Ajouter un commentaire</a> </button>
+    ";
+        // line 61
+        if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_email", [], "any", true, true, false, 61) && (0 === twig_compare(twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "user_is_validated", [], "any", false, false, false, 61), 1)))) {
+            echo "    
+            <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
+                    href=\"index.php?action=displayCommentForm&amp;id=";
+            // line 63
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["post"] ?? null), "id", [], "any", false, false, false, 63), "html", null, true);
+            echo "\">Ajouter un commentaire</a> </button>
+    ";
+        }
+        // line 65
+        echo "
 </div>
 ";
     }
@@ -175,7 +183,7 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
 
     public function getDebugInfo()
     {
-        return array (  160 => 62,  153 => 57,  141 => 51,  136 => 49,  129 => 46,  125 => 45,  121 => 44,  110 => 36,  105 => 34,  99 => 31,  95 => 30,  89 => 26,  80 => 20,  72 => 15,  67 => 12,  65 => 11,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  169 => 65,  164 => 63,  159 => 61,  153 => 57,  141 => 51,  136 => 49,  129 => 46,  125 => 45,  121 => 44,  110 => 36,  105 => 34,  99 => 31,  95 => 30,  89 => 26,  80 => 20,  72 => 15,  67 => 12,  65 => 11,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -190,7 +198,7 @@ Blog
 <!-- Main Content-->
 <div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
-        {% if session.logged_user_by_email is defined %}
+        {% if session.logged_user_email is defined %}
         <div class=\"d-flex flex-row\">
             <div>
                 <button type=\"button\" class=\"btn btn-outline-danger btn-sm\"><a
@@ -240,8 +248,11 @@ Blog
             <hr class=\"my-4\" />
         </div>
     </div>
-    <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
-            href=\"index.php?action=displayCommentForm&amp;id={{ post.id }}\">Ajouter un commentaire</a> </button>
+    {% if session.logged_user_email is defined and session.user_is_validated == 1 %}    
+            <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
+                    href=\"index.php?action=displayCommentForm&amp;id={{ post.id }}\">Ajouter un commentaire</a> </button>
+    {% endif %}
+
 </div>
 {% endblock content %}", "post.twig", "C:\\Users\\marle\\Desktop\\OPC\\projet5blog\\blogOpc\\templates\\post.twig");
     }

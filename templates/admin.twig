@@ -10,10 +10,8 @@ Blog
     <div class="row gx-4 gx-lg-5">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="post-preview">
-                {# <h2 class="post-title">Commentaires en attente de validation</h2> #}
                 <h1 class="post-subtitle">Vous avez {{number}} commentaire(s) en attente</h1>
                 {% for comments in comments %}
-
                 <p><b>Que souhaitez vous faire de ce commentaire ? : </b> <br> {{comments.message}} </p>
                 <button type="button" class="btn btn-outline-success"><a
                         href="index.php?action=validationComment&amp;commentId={{ comments.id }}">Valider le
@@ -22,6 +20,35 @@ Blog
                         href="index.php?action=deleteComment&amp;commentId={{ comments.id }}">Supprimer le
                         commentaire</a> </button>
                 <input type="hidden" name="commentId" value={{comments.id}}>
+                <hr class="my-4" />
+                {% endfor %}
+
+                <hr class="my-4" />
+                <hr class="my-4" />
+
+                <h1 class="post-subtitle">Liste des utilisateurs</h1>
+                {% for user in users %}
+                <p><b>Nom de l'utilisateur : </b> <br> {{user.username}} </p>
+                <p><b>Statut administrateur de cet utilisateur :</b> <br> {{user.is_admin}}</p>
+                {% if user.is_validated == false %}
+                <button type="button" class="btn btn-outline-success"><a
+                        href="index.php?action=validationUser&amp;userId={{ user.id }}">Valider comme
+                        utilisateur</a>
+                </button>
+                {% endif %}
+                {% if user.is_admin == false and user.is_validated == true %}
+                <button type="button" class="btn btn-outline-success"><a
+                        href="index.php?action=validationUserAdmin&amp;userId={{ user.id }}">Valider comme
+                        administrateur</a>
+                </button>
+                {% endif %}
+                {% if user.is_admin == true %}
+                <button type="button" class="btn btn-outline-success"><a
+                        href="index.php?action=validationUserSimple&amp;userId={{ user.id }}">Valider comme simple
+                        utilisateur</a>
+                </button>
+                {% endif %}
+                <input type="hidden" name="commentId" value={{user.id}}>
                 <hr class="my-4" />
                 {% endfor %}
             </div>

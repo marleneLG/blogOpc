@@ -13,7 +13,7 @@ class ModelPost
     {
         $query = 'SELECT p.*, u.username
         FROM posts p
-        JOIN users u on u.id = p.users_id
+        JOIN users u on u.id = p.user_id
         ORDER BY updated_at DESC';
         $statement = SPDO::getInstance()->query($query);
         $statement->execute();
@@ -26,7 +26,7 @@ class ModelPost
         $statement = SPDO::getInstance()->prepare(
             'SELECT p.*, u.username
              FROM posts p 
-                JOIN users u on u.id = p.users_id 
+                JOIN users u on u.id = p.user_id 
              WHERE p.id = ?;'
         );
         $statement->execute([$idPost]);
@@ -39,7 +39,7 @@ class ModelPost
 
         // Ecriture de la requête
         // https://www.php.net/manual/fr/pdo.prepare.php
-        $sqlQuery = 'INSERT INTO posts(title, message, created_at, updated_at, users_id) VALUES (:title, :message, :created_at, :updated_at, :users_id)';
+        $sqlQuery = 'INSERT INTO posts(title, message, created_at, updated_at, user_id) VALUES (:title, :message, :created_at, :updated_at, :user_id)';
 
         // Préparation insertion en base
         $insertPost = SPDO::getInstance()->prepare($sqlQuery);

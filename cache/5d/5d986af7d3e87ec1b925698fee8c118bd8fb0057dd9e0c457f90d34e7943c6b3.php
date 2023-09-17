@@ -81,7 +81,7 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
                     ";
         // line 45
         echo "                    ";
-        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_by_email", [], "any", true, true, false, 45)) {
+        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_email", [], "any", true, true, false, 45)) {
             // line 46
             echo "                    <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php?action=managementComment\">Gestion</a></li>
@@ -227,7 +227,7 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php#contact\">Contact</a>
                     </li>
                     {# si admin #}
-                    {% if session.logged_user_by_email is defined %}
+                    {% if session.logged_user_email is defined %}
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php?action=managementComment\">Gestion</a></li>
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
