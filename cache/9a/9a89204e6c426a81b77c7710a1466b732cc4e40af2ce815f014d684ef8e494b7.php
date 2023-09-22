@@ -57,26 +57,25 @@ class __TwigTemplate_03a4fa77b00cd8e23a011fb56a72cc810477bb114e545aaced0cbf9d6ce
     {
         $macros = $this->macros;
         // line 8
-        echo "<!-- Main Content-->
-<div class=\"container px-4 px-lg-5\">
+        echo "<div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
             <form method=\"post\" action=\"index.php?action=createComment\">
                 ";
-        // line 13
+        // line 12
         if (($context["errorMessage"] ?? null)) {
-            // line 14
+            // line 13
             echo "                <div class=\"alert alert-danger\">";
             echo twig_escape_filter($this->env, ($context["errorMessage"] ?? null), "html", null, true);
             echo "</div>
                 ";
         }
-        // line 16
+        // line 15
         echo "                <div class=\"mb-3\">
                     <label for=\"message\" class=\"form-label\">Contenu du commentaire</label>
                     <textarea name=\"message\" class=\"form-control\" rows=\"15\" required></textarea>
                     <input type=\"hidden\" name=\"postId\" value=";
-        // line 19
+        // line 18
         echo twig_escape_filter($this->env, ($context["postId"] ?? null), "html", null, true);
         echo ">
                 </div>
@@ -100,7 +99,7 @@ class __TwigTemplate_03a4fa77b00cd8e23a011fb56a72cc810477bb114e545aaced0cbf9d6ce
 
     public function getDebugInfo()
     {
-        return array (  80 => 19,  75 => 16,  69 => 14,  67 => 13,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  79 => 18,  74 => 15,  68 => 13,  66 => 12,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -112,7 +111,6 @@ Blog
 {% endblock title %}
 
 {% block content %}
-<!-- Main Content-->
 <div class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         <div class=\"col-md-10 col-lg-8 col-xl-7\">
