@@ -118,7 +118,7 @@ class __TwigTemplate_ecf665974a9556b0b89ad1d7e5062a6d9fd7e0559a3bba58013a84215b8
             echo "</p>
                 ";
             // line 33
-            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["user"], "validation", [], "any", false, false, false, 33), false))) {
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["user"], "is_validated", [], "any", false, false, false, 33), false))) {
                 // line 34
                 echo "                <button type=\"button\" class=\"btn btn-outline-success\"><a
                         href=\"index.php?action=validationUser&amp;userId=";
@@ -131,7 +131,7 @@ class __TwigTemplate_ecf665974a9556b0b89ad1d7e5062a6d9fd7e0559a3bba58013a84215b8
             }
             // line 39
             echo "                ";
-            if (((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["user"], "is_admin", [], "any", false, false, false, 39), false)) && (0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["user"], "validation", [], "any", false, false, false, 39), true)))) {
+            if (((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["user"], "is_admin", [], "any", false, false, false, 39), false)) && (0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["user"], "is_validated", [], "any", false, false, false, 39), true)))) {
                 // line 40
                 echo "                <button type=\"button\" class=\"btn btn-outline-success\"><a
                         href=\"index.php?action=validationUserAdmin&amp;userId=";
@@ -223,13 +223,13 @@ Blog
                 {% for user in users %}
                 <p><b>Nom de l'utilisateur : </b> <br> {{user.username}} </p>
                 <p><b>Statut administrateur de cet utilisateur :</b> <br> {{user.is_admin}}</p>
-                {% if user.validation == false %}
+                {% if user.is_validated == false %}
                 <button type=\"button\" class=\"btn btn-outline-success\"><a
                         href=\"index.php?action=validationUser&amp;userId={{ user.id }}\">Valider comme
                         utilisateur</a>
                 </button>
                 {% endif %}
-                {% if user.is_admin == false and user.validation == true %}
+                {% if user.is_admin == false and user.is_validated == true %}
                 <button type=\"button\" class=\"btn btn-outline-success\"><a
                         href=\"index.php?action=validationUserAdmin&amp;userId={{ user.id }}\">Valider comme
                         administrateur</a>

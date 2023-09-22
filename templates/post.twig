@@ -58,7 +58,7 @@ Blog
             <hr class="my-4" />
         </div>
     </div>
-    {% if session.logged_user_email is defined and session.user_is_validated == 1 %}    
+    {% if session.logged_user_email is defined and session.is_validated == 1 %}  
             <button type="button" class="btn btn-secondary mb-2"><a
                     href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
     {% endif %}

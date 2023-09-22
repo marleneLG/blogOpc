@@ -135,26 +135,20 @@ class UserController
             // connect à la db, récup des users
             $user = new ModelUser();
             $userFound = $user->getUserByEmail($email);
-            // SUPER
-
-
-
-            
-            // parcours des users
             $isFound = false;
-            // foreach ($allUsers as $currentUser) {
-            //     // vérif si hash du mdp envoyé === hash en db
-            //     $isPasswordvalid = password_verify($password, $currentUser['password']);
-            //     // https://www.php.net/manual/en/function.password-verify.php
-            //     if ($currentUser['email'] === $email && $isPasswordvalid) {
-            //         //on garde en mémoire l'utilisateur
-            //         $_SESSION['logged_user_email'] = $email;
-            //         // si oui, affichage de la page admin
-            //         $isFound = true;
-            //         $this->twig->addGlobal('session', $_SESSION);
-            //         break;
-            //     }
-            // }
+
+            //si userfound est dans la base de données et password valid
+            if ($userFound != false) {
+                $isPasswordValid = password_verify($password, $userFound['password']);
+                if ($isPasswordValid) {
+                    $_SESSION['logged_user_email'] = $email;
+                    $_SESSION['is_validated'] = $userFound['is_validated'];
+                    // si oui, affichage de la page admin
+                    $isFound = true;
+                    $this->twig->addGlobal('session', $_SESSION);
+                }
+            }
+
             if ($isFound) {
                 echo $this->twig->render('home.twig');
             } else {
