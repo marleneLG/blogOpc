@@ -2,7 +2,6 @@
 
 namespace Marle\BlogOpc\models;
 
-// use Marle\BlogOpc\src\model\SPDO;
 require_once('src/model.php');
 
 use SPDO;
@@ -38,7 +37,6 @@ class ModelPost
     {
 
         // Ecriture de la requête
-        // https://www.php.net/manual/fr/pdo.prepare.php
         $sqlQuery = 'INSERT INTO posts(title, message, created_at, updated_at, user_id) VALUES (:title, :message, :created_at, :updated_at, :user_id)';
 
         // Préparation insertion en base

@@ -2,8 +2,6 @@
 
 namespace Marle\BlogOpc\controllers;
 
-// session_start();
-
 use Marle\BlogOpc\models\ModelPost;
 use Marle\BlogOpc\models\ModelUser;
 use Marle\BlogOpc\controllers\UserController;
@@ -22,10 +20,6 @@ class PostController
         $this->twig = $twig;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     */
     public function index()
     {
         $post = new ModelPost();
@@ -70,7 +64,6 @@ class PostController
         $modelUser = new ModelUser();
         $userId = $modelUser->getUserByEmail($_SESSION['logged_user_email'])['id'];
 
-        //Todo si $userId null ??
         $postContent = [
             'title' => $title,
             'message' => $message,
@@ -104,7 +97,6 @@ class PostController
         $title = htmlspecialchars($_POST['title']);
         $message = htmlspecialchars($_POST['message']);
 
-        //Todo si $userId null ??
         $postContent = [
             'id' => $_POST['postId'],
             'title' => $title,

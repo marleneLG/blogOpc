@@ -63,15 +63,15 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
         // line 10
         if (($context["errorMessages"] ?? null)) {
             // line 11
-            echo "            ";
+            echo "        ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["errorMessages"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["errorMessage"]) {
                 // line 12
-                echo "            <div class=\"alert alert-danger\">";
+                echo "        <div class=\"alert alert-danger\">";
                 echo twig_escape_filter($this->env, $context["errorMessage"], "html", null, true);
                 echo "</div>
-            ";
+        ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['errorMessage'], $context['_parent'], $context['loop']);
@@ -159,7 +159,8 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                 Ce blog va vous présenter différents articles auxquels vous pourrez participer par l'échange de
                 commentaires.
             </p>
-            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=posts\"> cliquer ici pour vous rendre sur le
+            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=posts\"> cliquer ici pour vous rendre sur
+                le
                 blog</a>
         </div>
     </div>
@@ -229,7 +230,7 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
                     </div>
                     <!-- Submit Button-->
                     ";
-        // line 159
+        // line 160
         echo "                </form>
             </div>
         </div>
@@ -250,7 +251,7 @@ class __TwigTemplate_9790a2e5777c8765775fe88e94fee46b96cba113a069d2178115cc595f9
 
     public function getDebugInfo()
     {
-        return array (  233 => 159,  92 => 18,  86 => 16,  83 => 15,  80 => 14,  71 => 12,  66 => 11,  64 => 10,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
+        return array (  234 => 160,  92 => 18,  86 => 16,  83 => 15,  80 => 14,  71 => 12,  66 => 11,  64 => 10,  60 => 8,  56 => 7,  51 => 4,  47 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -265,9 +266,9 @@ Blog
 <section id=\"who\" class=\"container px-4 px-lg-5\">
     <div class=\"row gx-4 gx-lg-5 justify-content-center\">
         {% if errorMessages %}
-            {% for errorMessage in errorMessages %}
-            <div class=\"alert alert-danger\">{{errorMessage}}</div>
-            {% endfor %}
+        {% for errorMessage in errorMessages %}
+        <div class=\"alert alert-danger\">{{errorMessage}}</div>
+        {% endfor %}
         {% endif %}
         {% if validMessage %}
         <div class=\"alert alert-danger\">{{validMessage}}</div>
@@ -342,7 +343,8 @@ Blog
                 Ce blog va vous présenter différents articles auxquels vous pourrez participer par l'échange de
                 commentaires.
             </p>
-            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=posts\"> cliquer ici pour vous rendre sur le
+            <a id=\"linkBlog\" href=\"index.php?controller=PostController&action=posts\"> cliquer ici pour vous rendre sur
+                le
                 blog</a>
         </div>
     </div>

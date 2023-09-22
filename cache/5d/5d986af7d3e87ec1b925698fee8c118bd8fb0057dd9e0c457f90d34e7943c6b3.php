@@ -45,7 +45,6 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
     <meta name=\"author\" content=\"\" />
     <title>Blog Openclassroom</title>
     <link rel=\"icon\" type=\"image/x-icon\" href=\"assets/favicon.ico\" />
-    <!-- Font Awesome icons (free version)-->
     <script src=\"https://use.fontawesome.com/releases/v6.3.0/js/all.js\" crossorigin=\"anonymous\"></script>
     <!-- Google fonts-->
     <link href=\"https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic\" rel=\"stylesheet\"
@@ -53,12 +52,10 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
     <link
         href=\"https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800\"
         rel=\"stylesheet\" type=\"text/css\" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href=\"css/styles.css\" rel=\"stylesheet\" />
 </head>
 
 <body>
-    <!-- Navigation-->
     <nav class=\"navbar navbar-expand-lg navbar-light\" id=\"mainNav\">
         <div class=\"container px-4 px-lg-5\">
             <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarResponsive\"
@@ -79,22 +76,21 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\" href=\"index.php#contact\">Contact</a>
                     </li>
                     ";
-        // line 45
+        // line 42
         echo "                    ";
-        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_email", [], "any", true, true, false, 45)) {
-            // line 46
+        if (twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_email", [], "any", true, true, false, 42)) {
+            // line 43
             echo "                    <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php?action=managementComment\">Gestion</a></li>
                     <li class=\"nav-item\"><a class=\"nav-link px-lg-3 py-3 py-lg-4\"
                             href=\"index.php?action=disconnect\">Déconnexion</a></li>
                     ";
         }
-        // line 51
+        // line 48
         echo "                </ul>
             </div>
         </div>
     </nav>
-    <!-- Page Header-->
     <header class=\"masthead\">
         <div class=\"container position-relative px-4 px-lg-5\">
             <div class=\"row gx-4 gx-lg-5 justify-content-center\">
@@ -108,11 +104,10 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
         </div>
     </header>
     ";
-        // line 68
+        // line 64
         $this->displayBlock('content', $context, $blocks);
-        // line 70
-        echo "    <!-- Footer-->
-    <footer class=\"border-top\">
+        // line 66
+        echo "    <footer class=\"border-top\">
         <div class=\"container px-4 px-lg-5\">
             <div class=\"row gx-4 gx-lg-5 justify-content-center\">
                 <div class=\"col-md-10 col-lg-8 col-xl-7\">
@@ -158,11 +153,11 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
 </html>";
     }
 
-    // line 68
+    // line 64
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
-        // line 69
+        // line 65
         echo "    ";
     }
 
@@ -178,7 +173,7 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
 
     public function getDebugInfo()
     {
-        return array (  166 => 69,  162 => 68,  114 => 70,  112 => 68,  93 => 51,  86 => 46,  83 => 45,  38 => 1,);
+        return array (  161 => 65,  157 => 64,  110 => 66,  108 => 64,  90 => 48,  83 => 43,  80 => 42,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -193,7 +188,6 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
     <meta name=\"author\" content=\"\" />
     <title>Blog Openclassroom</title>
     <link rel=\"icon\" type=\"image/x-icon\" href=\"assets/favicon.ico\" />
-    <!-- Font Awesome icons (free version)-->
     <script src=\"https://use.fontawesome.com/releases/v6.3.0/js/all.js\" crossorigin=\"anonymous\"></script>
     <!-- Google fonts-->
     <link href=\"https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic\" rel=\"stylesheet\"
@@ -201,12 +195,10 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
     <link
         href=\"https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800\"
         rel=\"stylesheet\" type=\"text/css\" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href=\"css/styles.css\" rel=\"stylesheet\" />
 </head>
 
 <body>
-    <!-- Navigation-->
     <nav class=\"navbar navbar-expand-lg navbar-light\" id=\"mainNav\">
         <div class=\"container px-4 px-lg-5\">
             <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarResponsive\"
@@ -237,7 +229,6 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
             </div>
         </div>
     </nav>
-    <!-- Page Header-->
     <header class=\"masthead\">
         <div class=\"container position-relative px-4 px-lg-5\">
             <div class=\"row gx-4 gx-lg-5 justify-content-center\">
@@ -252,7 +243,6 @@ class __TwigTemplate_cf0cac1b074fc86d6bb683eef10d96f2893d58d0ac456e24e0093272682
     </header>
     {% block content %}
     {% endblock %}
-    <!-- Footer-->
     <footer class=\"border-top\">
         <div class=\"container px-4 px-lg-5\">
             <div class=\"row gx-4 gx-lg-5 justify-content-center\">

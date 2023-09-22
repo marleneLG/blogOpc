@@ -8,9 +8,9 @@ Blog
 <section id="who" class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         {% if errorMessages %}
-            {% for errorMessage in errorMessages %}
-            <div class="alert alert-danger">{{errorMessage}}</div>
-            {% endfor %}
+        {% for errorMessage in errorMessages %}
+        <div class="alert alert-danger">{{errorMessage}}</div>
+        {% endfor %}
         {% endif %}
         {% if validMessage %}
         <div class="alert alert-danger">{{validMessage}}</div>
@@ -85,7 +85,8 @@ Blog
                 Ce blog va vous présenter différents articles auxquels vous pourrez participer par l'échange de
                 commentaires.
             </p>
-            <a id="linkBlog" href="index.php?controller=PostController&action=posts"> cliquer ici pour vous rendre sur le
+            <a id="linkBlog" href="index.php?controller=PostController&action=posts"> cliquer ici pour vous rendre sur
+                le
                 blog</a>
         </div>
     </div>
@@ -133,29 +134,6 @@ Blog
                     </div>
                     <button type="submit">Envoyer</button>
                     <br />
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a
-                                href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
-                    </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage">
-                        <div class="text-center text-danger mb-3">Error sending message!</div>
-                    </div>
-                    <!-- Submit Button-->
-                    {# <button class="btn btn-primary text-uppercase disabled" id="submitButton"
-                        type="submit">Send</button> #}
                 </form>
             </div>
         </div>

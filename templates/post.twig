@@ -5,7 +5,6 @@ Blog
 {% endblock title %}
 
 {% block content %}
-<!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         {% if session.logged_user_email is defined %}
@@ -25,7 +24,6 @@ Blog
         {% endif %}
         <hr class="my-4" />
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <!-- Post preview-->
             <div class="post-preview">
                 <h1 class="post-title">{{ post.title }}</h1>
                 <p class="post-subtitle">{{ post.message }}</p>
@@ -36,7 +34,6 @@ Blog
                     <b>{{ post.created_at }}</b>
                 </p>
             </div>
-            <!-- Divider-->
             <hr class="my-4" />
         </div>
 
@@ -51,10 +48,8 @@ Blog
                 <b>{{ currentComment.created_at }}</b>
                 </p>
             </div>
-            <!-- Divider-->
             <hr class="my-4" />
             {% endfor %}
-            <!-- Divider-->
             <hr class="my-4" />
         </div>
     </div>
