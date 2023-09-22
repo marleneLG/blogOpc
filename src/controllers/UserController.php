@@ -26,10 +26,14 @@ class UserController
     {
         if ($this->hasRole() === false) return;
 
-        $username = htmlspecialchars($_POST['username']);
-        $password = htmlspecialchars($_POST['password']);
+        $postUsername = $_POST['username'];
+        $postPassword = $_POST['password'];
+        $postEmail = $_POST['email'];
+
+        $username = htmlspecialchars($postUsername);
+        $password = htmlspecialchars($postPassword);
         $passwordHashed = password_hash($password, PASSWORD_BCRYPT);
-        $email = htmlspecialchars($_POST['email']);
+        $email = htmlspecialchars($postEmail);
         $isAdmin = 0;
         $isValidated = 0;
 
@@ -121,10 +125,12 @@ class UserController
 
     public function login()
     {
+        $postEmail = $_POST['email'];
+        $postPassword = $_POST['password'];
         // vérifier les champs envoyés && non null/vide
-        if (isset($_POST['email']) && isset($_POST['password'])) {
-            $email = htmlspecialchars($_POST['email']);
-            $password = htmlspecialchars($_POST['password']);
+        if (isset($postEmail) && isset($postPassword)) {
+            $email = htmlspecialchars($postEmail);
+            $password = htmlspecialchars($postPassword);
 
             // connect à la db, récup des users
             $user = new ModelUser();
