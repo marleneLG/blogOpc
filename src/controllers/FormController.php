@@ -49,11 +49,6 @@ class FormController
             $errorMessages[] = "Le téléphone est incorrect.";
         }
 
-        // if ($errorMessages !== '') {
-        //     echo $this->twig->render('home.twig', ['errorMessages' => $errorMessages]);
-        //     return;
-        // }
-
         $email_message = "Détail.\n\n";
         $email_message .= "Nom: " . $name . "\n";
         $email_message .= "Prenom: " . "\n";
@@ -64,11 +59,9 @@ class FormController
         $headers = "From:marlene.mlg53@gmail.com " . "\r\n";
         $subject = 'Formulaire de contact';
         if (mail($email_to, $subject, $email_message, $headers)) {
-            var_dump('mail envoyé');
+            echo $this->twig->render('home.twig', ['validMessage' => $validMessage]);
         } else {
-            var_dump('et non !');
+            echo $this->twig->render('home.twig', ['errorMessage' => $errorMessages]);
         }
-
-        echo $this->twig->render('home.twig', ['validMessage' => $validMessage]);
     }
 }

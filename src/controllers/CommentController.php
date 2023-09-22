@@ -27,17 +27,12 @@ class CommentController
      */
     public function index($postId)
     {
-        // $postInstance = new ModelPost();
-        // $post = $postInstance->getPostById($postId);
-
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsApprovedFromPostId($postId);
         $postContent = $this->getPostById($postId);
         $user = new ModelUser();
         $allUsers = $user->getUsers();
         echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]);
-
-        // echo $this->twig->render('post.twig', ['post' => $post, 'comments' => $allComments]);
     }
 
     public function isAuthorized()

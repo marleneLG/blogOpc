@@ -17,10 +17,6 @@ class UserController
         $this->datetime = (new \DateTime('now'))->format('Y-m-d H:i:s');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     */
     public function index()
     {
         echo $this->twig->render('connexion.twig');
@@ -37,7 +33,6 @@ class UserController
         $isAdmin = 0;
         $isValidated = 0;
 
-        //Todo si $userId null ??
         $userContent = [
             'username' => $username,
             'password' => $passwordHashed,
@@ -128,7 +123,6 @@ class UserController
     {
         // vérifier les champs envoyés && non null/vide
         if (isset($_POST['email']) && isset($_POST['password'])) {
-            // TODO vérification  / sécurisation de l'input
             $email = htmlspecialchars($_POST['email']);
             $password = htmlspecialchars($_POST['password']);
 
@@ -162,15 +156,5 @@ class UserController
         unset($_SESSION['logged_user_email']);
         $this->twig->addGlobal('session', $_SESSION);
         echo $this->twig->render('home.twig');
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
     }
 }

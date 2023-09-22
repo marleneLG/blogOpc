@@ -1,7 +1,6 @@
 <?php
 
 namespace Marle\BlogOpc\models;
-// use Marle\BlogOpc\src\model\SPDO;
 
 require_once('src/model.php');
 
