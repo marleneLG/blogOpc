@@ -53,25 +53,27 @@ class CommentController
 
     public function createComment()
     {
-        $isValidComment = isset($_POST['message'])
-            && trim($_POST['message']) != ''
-            && strlen($_POST['message']) < self::MAX_MESSAGE_SIZE
-            && isset($_POST['postId']);
+        $postMessage = $_POST['message'];
+        $postId = $_POST['postId'];
+
+        $isValidComment = isset($postMessage)
+            && trim($postMessage) != ''
+            && strlen($postMessage) < self::MAX_MESSAGE_SIZE
+            && isset($postId);
 
         if (!$isValidComment) {
             $errorMessage = 'Champ mal rempli';
-            $this->displayCommentForm($_POST['postId'], $errorMessage);
+            $this->displayCommentForm($postId, $errorMessage);
             return;
         };
 
-        $postId = $_POST['postId'];
-        $message = htmlspecialchars($_POST['message']);
+        $message = htmlspecialchars($postMessage);
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
 
         if ($post === false) {
             $errorMessage = 'Pas de post associé existant';
-            $this->displayCommentForm($_POST['postId'], $errorMessage);
+            $this->displayCommentForm($postId, $errorMessage);
             return;
         }
 
@@ -97,7 +99,7 @@ class CommentController
         $allUsers = $user->getUsers();
         $allComments = $comment->getCommentsIsNotApproved();
         $numberComments = count($allComments);
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers ,'number' => $numberComments]);
+        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments]);
     }
 
     public function updateComment($commentId)
