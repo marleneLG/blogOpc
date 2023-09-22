@@ -45,8 +45,11 @@ class PostController
     {
         if ($this->isAuthorized() === false) return;
 
-        $isTitleValid = isset($_POST['title']) && trim($_POST['title']) != '' && strlen($_POST['title']) < self::MAX_POST_TITLE_LENGTH;
-        $isMessageValid = isset($_POST['message']) && trim($_POST['message']) != '' && strlen($_POST['message']) < self::MAX_POST_CONTENT_LENGTH;
+        $postTitle = $_POST['title'];
+        $postMessage = $_POST['message'];
+
+        $isTitleValid = isset($postTitle) && trim($postTitle) != '' && strlen($postTitle) < self::MAX_POST_TITLE_LENGTH;
+        $isMessageValid = isset($postMessage) && trim($postMessage) != '' && strlen($postMessage) < self::MAX_POST_CONTENT_LENGTH;
 
         if (!$isTitleValid || !$isMessageValid) {
             echo $this->twig->render('createPost.twig', ['error' => 'Merci de remplir le formulaire']);
@@ -59,8 +62,11 @@ class PostController
 
         $this->validForm();
 
-        $title = htmlspecialchars($_POST['title']);
-        $message = htmlspecialchars($_POST['message']);
+        $postTitle = $_POST['title'];
+        $postMessage = $_POST['message'];
+
+        $title = htmlspecialchars($postTitle);
+        $message = htmlspecialchars($postMessage);
         $modelUser = new ModelUser();
         $userId = $modelUser->getUserByEmail($_SESSION['logged_user_email'])['id'];
 
@@ -94,11 +100,14 @@ class PostController
 
         $this->validForm();
 
-        $title = htmlspecialchars($_POST['title']);
-        $message = htmlspecialchars($_POST['message']);
+        $postTitle = $_POST['title'];
+        $postMessage = $_POST['message'];
+        $postId = $_POST['postId'];
+        $title = htmlspecialchars($postTitle);
+        $message = htmlspecialchars($postMessage);
 
         $postContent = [
-            'id' => $_POST['postId'],
+            'id' => $postId,
             'title' => $title,
             'message' => $message,
             'updated_at' => $this->datetime,
