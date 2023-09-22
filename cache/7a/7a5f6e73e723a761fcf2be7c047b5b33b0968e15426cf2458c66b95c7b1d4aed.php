@@ -156,7 +156,7 @@ class __TwigTemplate_d452618eee4339dd958883139665316963be58806adfe132b2053576fe8
     </div>
     ";
         // line 61
-        if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_email", [], "any", true, true, false, 61) && (0 === twig_compare(twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "user_is_validated", [], "any", false, false, false, 61), 1)))) {
+        if ((twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "logged_user_email", [], "any", true, true, false, 61) && (0 === twig_compare(twig_get_attribute($this->env, $this->source, ($context["session"] ?? null), "is_validated", [], "any", false, false, false, 61), 1)))) {
             echo "    
             <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
                     href=\"index.php?action=displayCommentForm&amp;id=";
@@ -248,7 +248,7 @@ Blog
             <hr class=\"my-4\" />
         </div>
     </div>
-    {% if session.logged_user_email is defined and session.user_is_validated == 1 %}    
+    {% if session.logged_user_email is defined and session.is_validated == 1 %}    
             <button type=\"button\" class=\"btn btn-secondary mb-2\"><a
                     href=\"index.php?action=displayCommentForm&amp;id={{ post.id }}\">Ajouter un commentaire</a> </button>
     {% endif %}
