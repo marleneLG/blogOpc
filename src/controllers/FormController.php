@@ -16,15 +16,20 @@ class FormController
 
     public function sendForm()
     {
-        $isNameValid = isset($_POST['name']) && trim($_POST['name']) != '' && strlen($_POST['name']) < self::MAX_LENGTH;
-        $isPhoneValid = isset($_POST['phone']) && trim($_POST['phone']) != '' && strlen($_POST['phone']) < self::MAX_LENGTH;
-        $isEmailValid = isset($_POST['email']) && trim($_POST['email']) != '' && strlen($_POST['email']) < self::MAX_LENGTH;
-        $isMessageValid = isset($_POST['message']) && trim($_POST['message']) != '' && strlen($_POST['message']) < self::MAX_MESSAGE_LENGTH;
+        $postName = $_POST['name'];
+        $postPhone = $_POST['phone'];
+        $postEmail = $_POST['email'];
+        $postMessage = $_POST['message'];
 
-        $name = htmlspecialchars($_POST['name']); // required
-        $email = htmlspecialchars($_POST['email']); // required
-        $phone = htmlspecialchars($_POST['phone']); // not required
-        $message = htmlspecialchars($_POST['message']); // required
+        $isNameValid = isset($postName) && trim($postName) != '' && strlen($postName) < self::MAX_LENGTH;
+        $isPhoneValid = isset($postPhone) && trim($postPhone) != '' && strlen($postPhone) < self::MAX_LENGTH;
+        $isEmailValid = isset($postEmail) && trim($postEmail) != '' && strlen($postEmail) < self::MAX_LENGTH;
+        $isMessageValid = isset($postMessage) && trim($postMessage) != '' && strlen($postMessage) < self::MAX_MESSAGE_LENGTH;
+
+        $name = htmlspecialchars($postName); // required
+        $email = htmlspecialchars($postEmail); // required
+        $phone = htmlspecialchars($postPhone); // not required
+        $message = htmlspecialchars($postMessage); // required
         $errorMessages = [];
         $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
         $email_to = "marlene.mlg53@gmail.com";
