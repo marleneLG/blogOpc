@@ -18,38 +18,6 @@ $twig = new Environment($loader, [
 ]);
 $twig->addGlobal('session', $_SESSION);
 
-/**
- * index.php?controller=PostController&amp;action=post
- * http://localhost/index.php?action=post-create
- */
-/*
-if (isset($_GET['action'])) {
-    if ($_GET['action'] === 'post') {
-        $postController = new PostController($twig);
-        $postController->index();
-    }
-    if ($_GET['action'] === 'connect') {
-        $userController = new UserController($twig);
-        $userController->index();
-    }
-    if ($_GET['action'] === 'login') {
-        $userController = new UserController($twig);
-        $userController->login();
-    }
-    if ($_GET['action'] === 'disconnect') {
-        $userController = new UserController($twig);
-        $userController->disconnect();
-    }
-    if ($_GET['action'] === 'management') {
-        $userController = new UserController($twig);
-        $userController->management();
-    }
-    // sinon ?? switch avec default
-} else {
-    $homeController = new HomeController($twig);
-    $homeController->index();
-}
-*/
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'posts':
