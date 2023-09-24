@@ -19,7 +19,7 @@ class UserController
 
     public function index()
     {
-        echo $this->twig->render('connexion.twig');
+        print_r($this->twig->render('connexion.twig'));
     }
 
     public function createUser()
@@ -62,7 +62,7 @@ class UserController
         $allUsers = $user->getUsers();
         $commentInstance = new ModelComment();
         $allComments = $commentInstance->getCommentsIsNotApproved();
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
+        print_r($this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]));
     }
 
     public function updateUserSimple($userId)
@@ -74,7 +74,7 @@ class UserController
         $allUsers = $user->getUsers();
         $commentInstance = new ModelComment();
         $allComments = $commentInstance->getCommentsIsNotApproved();
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
+        print_r($this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]));
     }
 
     public function updateUser($userId)
@@ -86,13 +86,13 @@ class UserController
         $allUsers = $user->getUsers();
         $commentInstance = new ModelComment();
         $allComments = $commentInstance->getCommentsIsNotApproved();
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
+        print_r($this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]));
     }
 
     public function displayFormUser()
     {
         //dirige vers formulaire d'ajout d'un user
-        echo $this->twig->render('createUser.twig');
+        print_r($this->twig->render('createUser.twig'));
     }
 
     public function displayManagementUser()
@@ -101,7 +101,7 @@ class UserController
 
         $user = new ModelUser();
         $allUsers = $user->getUsers();
-        echo $this->twig->render('admin.twig', ['users' => $allUsers]);
+        print_r($this->twig->render('admin.twig', ['users' => $allUsers]));
     }
     public function hasRole()
     {
@@ -150,9 +150,9 @@ class UserController
             }
 
             if ($isFound) {
-                echo $this->twig->render('home.twig');
+                print_r($this->twig->render('home.twig'));
             } else {
-                echo $this->twig->render('connexion.twig');
+                print_r($this->twig->render('connexion.twig'));
             }
         }
     }
@@ -161,6 +161,6 @@ class UserController
     {
         unset($_SESSION['logged_user_email']);
         $this->twig->addGlobal('session', $_SESSION);
-        echo $this->twig->render('home.twig');
+        print_r($this->twig->render('home.twig'));
     }
 }
