@@ -32,7 +32,7 @@ class CommentController
         $postContent = $this->getPostById($postId);
         $user = new ModelUser();
         $allUsers = $user->getUsers();
-        echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]);
+        print_r($this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]));
     }
 
     public function isAuthorized()
@@ -45,10 +45,10 @@ class CommentController
     {
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
-        echo $this->twig->render('createComment.twig', [
+        print_r($this->twig->render('createComment.twig', [
             'postId' => $post['id'],
             'errorMessage' => $errorMessage
-        ]);
+        ]));
     }
 
     public function createComment()
@@ -87,7 +87,7 @@ class CommentController
         $comment = new ModelComment();
         $comment->createCommentModel($commentContent);
 
-        echo $this->index($postIdFromDb);
+        print_r($this->index($postIdFromDb));
     }
 
     public function displayManagementComment()
@@ -99,7 +99,7 @@ class CommentController
         $allUsers = $user->getUsers();
         $allComments = $comment->getCommentsIsNotApproved();
         $numberComments = count($allComments);
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments]);
+        print_r($this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments]));
     }
 
     public function updateComment($commentId)
@@ -120,7 +120,7 @@ class CommentController
         $allComments = $commentInstance->getCommentsIsNotApproved();
         $commentInstance->deleteCommentModel($commentId);
 
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'commentId' => $comment['id']]);
+        print_r($this->twig->render('admin.twig', ['comments' => $allComments, 'commentId' => $comment['id']]));
     }
     public function getPostById($postId)
     {
