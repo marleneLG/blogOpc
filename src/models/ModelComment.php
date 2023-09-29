@@ -16,22 +16,20 @@ class ModelComment
         return $comments;
     }
 
-    public function getCommentById($idComment)
+    public function getCommentById(int $idComment)
     {
         $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE id = ?');
         $statement->execute([$idComment]);
         $comment = $statement->fetch();
-        var_dump('idcomment get commentbid',$idComment);
+        var_dump('idcomment get commentbid', $idComment);
         return $comment;
     }
 
-    public function getCommentsIsApprovedFromPostId($postId)
+    public function getCommentsIsApprovedFromPostId(int $postId)
     {
         $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND post_id = ?');
         $statement->execute([$postId]);
         $comments = $statement->fetchAll();
-        var_dump('getCommentsIsApprovedFromPostId', $postId);
-
         return $comments;
     }
 
@@ -43,7 +41,7 @@ class ModelComment
         return $comments;
     }
 
-    public function createCommentModel($commentContent)
+    public function createCommentModel(array $commentContent)
     {
         $sqlQuery = 'INSERT INTO comments(message, created_at, updated_at, post_id) VALUES (:message, :created_at, :updated_at, :post_id)';
 
@@ -55,7 +53,7 @@ class ModelComment
         }
     }
 
-    public function validationCommentModel($commentId)
+    public function validationCommentModel(int $commentId)
     {
         $sqlQuery = 'UPDATE comments SET is_approved = 1 WHERE id = :id';
         $insertComment = SPDO::getInstance()->prepare($sqlQuery);
@@ -65,7 +63,7 @@ class ModelComment
         }
     }
 
-    public function deleteCommentModel($commentId)
+    public function deleteCommentModel(int $commentId)
     {
         $statement = SPDO::getInstance()->prepare('DELETE FROM comments WHERE id= ?');
         return $statement->execute([$commentId]);
