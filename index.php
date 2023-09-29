@@ -66,7 +66,9 @@ if (isset($_GET['action'])) {
             break;
         case 'validationComment':
             $commentController = new CommentController($twig);
-            $commentController->updateComment($_GET['commentId']);
+            if (!empty($_GET['commentId'])) {
+                $commentController->updateComment($_GET['commentId']);
+            }
             break;
         case 'createPost':
             $postController = new PostController($twig);
