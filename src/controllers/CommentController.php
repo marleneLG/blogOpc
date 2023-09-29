@@ -101,7 +101,7 @@ class CommentController
         $allUsers = $user->getUsers();
         $allComments = $comment->getCommentsIsNotApproved();
         $numberComments = count($allComments);
-        print_r($this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments]));
+        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments]);
     }
 
     public function updateComment($commentId)
@@ -118,11 +118,10 @@ class CommentController
         if ($this->isAuthorized() === false) return;
 
         $commentInstance = new ModelComment();
-        $comment = $commentInstance->getCommentById($commentId);
         $allComments = $commentInstance->getCommentsIsNotApproved();
         $commentInstance->deleteCommentModel($commentId);
 
-        print_r($this->twig->render('admin.twig', ['comments' => $allComments, 'commentId' => $comment['id']]));
+        echo $this->twig->render('admin.twig', ['comments' => $allComments]);
     }
     public function getPostById($postId)
     {

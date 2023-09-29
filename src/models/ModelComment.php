@@ -18,7 +18,7 @@ class ModelComment
 
     public function getCommentById($idComment)
     {
-        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE id = "' . $idComment . '";');
+        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE id = ?');
         $statement->execute([$idComment]);
         $comment = $statement->fetch();
         return $comment;
@@ -26,8 +26,8 @@ class ModelComment
 
     public function getCommentsIsApprovedFromPostId($postId)
     {
-        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND post_id = "' . $postId . '";');
-        $statement->execute();
+        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND post_id = ?');
+        $statement->execute([$postId]);
         $comments = $statement->fetchAll();
 
         return $comments;
@@ -65,9 +65,7 @@ class ModelComment
 
     public function deleteCommentModel($commentId)
     {
-        $statement = SPDO::getInstance()->prepare('DELETE FROM comments WHERE id="' . $commentId . '";');
-        $statement->execute([
-            $commentId
-        ]);
+        $statement = SPDO::getInstance()->prepare('DELETE FROM comments WHERE id= ?');
+        $statement->execute([$commentId]);
     }
 }
