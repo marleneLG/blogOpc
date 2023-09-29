@@ -32,7 +32,7 @@ class CommentController
         $postContent = $this->getPostById($postId);
         $user = new ModelUser();
         $allUsers = $user->getUsers();
-        print_r($this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]));
+        echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]);
     }
 
     public function isAuthorized()
@@ -45,10 +45,10 @@ class CommentController
     {
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
-        print_r($this->twig->render('createComment.twig', [
+        echo $this->twig->render('createComment.twig', [
             'postId' => $post['id'],
             'errorMessage' => $errorMessage
-        ]));
+        ]);
     }
 
     public function createComment()
@@ -89,10 +89,10 @@ class CommentController
         $comment = new ModelComment();
         $comment->createCommentModel($commentContent);
 
-        print_r($this->index($postIdFromDb));
+        echo $this->index($postIdFromDb);
     }
 
-    public function displayManagementComment()
+    public function displayManagementComment($errorMessage = null, $validMessage = null)
     {
         if ($this->isAuthorized() === false) return;
 
@@ -101,7 +101,7 @@ class CommentController
         $allUsers = $user->getUsers();
         $allComments = $comment->getCommentsIsNotApproved();
         $numberComments = count($allComments);
-        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments]);
+        echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments, 'validMessage' => $validMessage, 'errorMessage' => $errorMessage]);
     }
 
     public function updateComment($commentId)
@@ -118,10 +118,13 @@ class CommentController
         if ($this->isAuthorized() === false) return;
 
         $commentInstance = new ModelComment();
-        $allComments = $commentInstance->getCommentsIsNotApproved();
-        $commentInstance->deleteCommentModel($commentId);
-
-        echo $this->twig->render('admin.twig', ['comments' => $allComments]);
+        $errorMessage = 'Commentaire non supprimé';
+        $validMessage = 'Commentaire supprimé avec succès';
+        if ($commentInstance->deleteCommentModel($commentId) == true) {
+            $this->displayManagementComment($validMessage);
+        } else {
+            $this->displayManagementComment($errorMessage);
+        }
     }
     public function getPostById($postId)
     {

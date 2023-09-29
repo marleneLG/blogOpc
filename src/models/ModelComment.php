@@ -21,6 +21,7 @@ class ModelComment
         $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE id = ?');
         $statement->execute([$idComment]);
         $comment = $statement->fetch();
+        var_dump('idcomment get commentbid',$idComment);
         return $comment;
     }
 
@@ -29,6 +30,7 @@ class ModelComment
         $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND post_id = ?');
         $statement->execute([$postId]);
         $comments = $statement->fetchAll();
+        var_dump('getCommentsIsApprovedFromPostId', $postId);
 
         return $comments;
     }
@@ -49,7 +51,7 @@ class ModelComment
         $result = $insertComment->execute($commentContent);
 
         if ($result === false) {
-            print_r('oops', $insertComment->errorCode(), $insertComment->errorInfo());
+            echo 'oops', $insertComment->errorCode(), $insertComment->errorInfo();
         }
     }
 
@@ -59,13 +61,13 @@ class ModelComment
         $insertComment = SPDO::getInstance()->prepare($sqlQuery);
         $isInserted = $insertComment->execute([':id' => $commentId]);
         if ($isInserted === false) {
-            print_r('oops', $insertComment->errorCode(), $insertComment->errorInfo());
+            echo 'oops', $insertComment->errorCode(), $insertComment->errorInfo();
         }
     }
 
     public function deleteCommentModel($commentId)
     {
         $statement = SPDO::getInstance()->prepare('DELETE FROM comments WHERE id= ?');
-        $statement->execute([$commentId]);
+        return $statement->execute([$commentId]);
     }
 }

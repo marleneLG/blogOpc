@@ -46,7 +46,7 @@ class ModelPost
         $isInserted = $insertPost->execute($postContent);
 
         if ($isInserted === false) {
-            print_r('oops', $insertPost->errorCode(), $insertPost->errorInfo());
+            echo 'oops', $insertPost->errorCode(), $insertPost->errorInfo();
         }
     }
 
@@ -56,15 +56,15 @@ class ModelPost
         $insertPost = SPDO::getInstance()->prepare($sqlQuery);
         $isInserted = $insertPost->execute($postContent);
         if ($isInserted === false) {
-            print_r('oops', $insertPost->errorCode(), $insertPost->errorInfo());
+            echo 'oops', $insertPost->errorCode(), $insertPost->errorInfo();
         }
     }
 
     public function deletePostModel($postId)
     {
-        $statement = SPDO::getInstance()->prepare('DELETE FROM posts WHERE id="' . $postId . '";');
-        $statement->execute([
-            $postId
-        ]);
+        $statement = SPDO::getInstance()->prepare('DELETE FROM posts WHERE id= ?');
+        var_dump($postId) ;
+
+        return $statement->execute([$postId]);
     }
 }

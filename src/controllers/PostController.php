@@ -24,7 +24,7 @@ class PostController
     {
         $post = new ModelPost();
         $allPosts = $post->getPosts();
-        print_r($this->twig->render('posts.twig', ['posts' => $allPosts]));
+        echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
     }
 
     public function isAuthorized()
@@ -38,7 +38,7 @@ class PostController
         if ($this->isAuthorized() === false) return;
 
         //dirige vers formulaire d'ajout d'un post
-        print_r($this->twig->render('createPost.twig'));
+        echo $this->twig->render('createPost.twig');
     }
 
     public function validForm()
@@ -52,7 +52,7 @@ class PostController
         $isMessageValid = isset($postMessage) && trim($postMessage) != '' && strlen($postMessage) < self::MAX_POST_CONTENT_LENGTH;
 
         if (!$isTitleValid || !$isMessageValid) {
-            print_r($this->twig->render('createPost.twig', ['error' => 'Merci de remplir le formulaire']));
+            echo $this->twig->render('createPost.twig', ['error' => 'Merci de remplir le formulaire']);
         }
     }
 
@@ -91,7 +91,7 @@ class PostController
 
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
-        print_r($this->twig->render('editPost.twig', ['post' => $post]));
+        echo $this->twig->render('editPost.twig', ['post' => $post]);
     }
 
     public function editPost()
@@ -124,8 +124,12 @@ class PostController
 
         $postInstance = new ModelPost();
         $allPosts = $postInstance->getPosts();
-        $postInstance->deletePostModel($postId);
+        $this->twig->addGlobal('session', $_SESSION);
 
-        print_r($this->twig->render('posts.twig', ['posts' => $allPosts]));
+        if ($postInstance->deletePostModel($postId) == true) {
+            echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'validMessage' => 'Post supprimé avec succès']);
+        } else {
+            echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'errorMessage' => 'Post non supprimé']);
+        }
     }
 }

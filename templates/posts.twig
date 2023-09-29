@@ -18,6 +18,9 @@ Blog
             {% if errorMessage %}
             <div class="alert alert-danger">{{errorMessage}}</div>
             {% endif %}
+            {% if validMessage %}
+            <div class="alert alert-danger">{{validMessage}}</div>
+            {% endif %}
             {% for currentPost in posts %}
             <div class="post-preview">
                 <a href="index.php?action=post&amp;id={{ currentPost.id }}">

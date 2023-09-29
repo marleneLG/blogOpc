@@ -18,6 +18,6 @@ class HomeController
     {
         $user = new ModelUser();
         $allUsers = $user->getUsers();
-        print_r($this->twig->render('home.twig', [$errorMessage, 'users' => $allUsers]));
+        echo $this->twig->render('home.twig', [$errorMessage, 'users' => $allUsers]);
     }
 }
