@@ -8,7 +8,7 @@ use SPDO;
 
 class ModelUser
 {
-    public function createUserModel($userContent)
+    public function createUserModel(array $userContent)
     {
 
         // Ecriture de la requête
@@ -25,7 +25,7 @@ class ModelUser
         }
     }
 
-    public function validationUserModel($userId)
+    public function validationUserModel(int $userId)
     {
         $sqlQuery = 'UPDATE users SET is_validated=1 WHERE id = :id';
         $insertUser = SPDO::getInstance()->prepare($sqlQuery);
@@ -35,7 +35,7 @@ class ModelUser
         }
     }
 
-    public function validationUserAdminModel($userId)
+    public function validationUserAdminModel(int $userId)
     {
         $sqlQuery = 'UPDATE users SET is_admin=1 WHERE id = :id';
         $insertUser = SPDO::getInstance()->prepare($sqlQuery);
@@ -45,7 +45,7 @@ class ModelUser
         }
     }
 
-    public function validationUserSimpleModel($userId)
+    public function validationUserSimpleModel(int $userId)
     {
         $sqlQuery = 'UPDATE users SET is_admin=0 WHERE id = :id';
         $insertUser = SPDO::getInstance()->prepare($sqlQuery);
@@ -62,7 +62,7 @@ class ModelUser
         return $statement->fetchAll();
     }
 
-    public function getUserByEmail($email)
+    public function getUserByEmail(string $email)
     {
         $statement = SPDO::getInstance()->prepare('SELECT id, password, is_validated FROM users WHERE email = :email');
         $statement->execute([':email' => $email]);
