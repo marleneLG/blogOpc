@@ -25,7 +25,7 @@ class CommentController
      * Display a listing of the resource.
      *
      */
-    public function index($postId)
+    public function index(int $postId)
     {
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsApprovedFromPostId($postId);
@@ -41,7 +41,7 @@ class CommentController
         return $userInstance->hasRole();
     }
 
-    public function displayCommentForm($postId, $errorMessage = null)
+    public function displayCommentForm(int $postId, string $errorMessage = null)
     {
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
@@ -92,7 +92,7 @@ class CommentController
         echo $this->index($postIdFromDb);
     }
 
-    public function displayManagementComment($errorMessage = null, $validMessage = null)
+    public function displayManagementComment(string $errorMessage = null, string $validMessage = null)
     {
         if ($this->isAuthorized() === false) return;
 
@@ -104,7 +104,7 @@ class CommentController
         echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments, 'validMessage' => $validMessage, 'errorMessage' => $errorMessage]);
     }
 
-    public function updateComment($commentId)
+    public function updateComment(int $commentId)
     {
         if ($this->isAuthorized() === false) return;
 
@@ -113,7 +113,7 @@ class CommentController
         $this->displayManagementComment();
     }
 
-    public function deleteComment($commentId)
+    public function deleteComment(int $commentId)
     {
         if ($this->isAuthorized() === false) return;
 
@@ -126,7 +126,7 @@ class CommentController
             $this->displayManagementComment($errorMessage);
         }
     }
-    public function getPostById($postId)
+    public function getPostById(int $postId)
     {
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
