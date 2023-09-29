@@ -49,7 +49,7 @@ class ModelComment
         $result = $insertComment->execute($commentContent);
 
         if ($result === false) {
-            var_dump('oops', $insertComment->errorCode(), $insertComment->errorInfo());
+            print_r('oops', $insertComment->errorCode(), $insertComment->errorInfo());
         }
     }
 
@@ -57,9 +57,9 @@ class ModelComment
     {
         $sqlQuery = 'UPDATE comments SET is_approved = 1 WHERE id = :id';
         $insertComment = SPDO::getInstance()->prepare($sqlQuery);
-        $isInserted = $insertComment->execute([':id' =>$commentId]);
+        $isInserted = $insertComment->execute([':id' => $commentId]);
         if ($isInserted === false) {
-            var_dump('oops', $insertComment->errorCode(), $insertComment->errorInfo());
+            print_r('oops', $insertComment->errorCode(), $insertComment->errorInfo());
         }
     }
 
