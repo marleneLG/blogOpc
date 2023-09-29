@@ -64,9 +64,9 @@ class FormController
         $headers = "From:marlene.mlg53@gmail.com " . "\r\n";
         $subject = 'Formulaire de contact';
         if (mail($email_to, $subject, $email_message, $headers)) {
-            print_r($this->twig->render('home.twig', ['validMessage' => $validMessage]));
+            echo $this->twig->render('home.twig', ['validMessage' => $validMessage]);
         } else {
-            print_r($this->twig->render('home.twig', ['errorMessage' => $errorMessages]));
+            echo $this->twig->render('home.twig', ['errorMessage' => $errorMessages]);
         }
     }
 }
