@@ -53,7 +53,9 @@ class CommentController
 
     public function createComment()
     {
-        $postMessage = $_POST['message'];
+        if (isset($_POST['message'])) {
+            $postMessage = $_POST['message'];
+        }
         $postId = $_POST['postId'];
 
         $isValidComment = isset($postMessage)
