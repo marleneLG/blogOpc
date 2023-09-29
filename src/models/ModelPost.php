@@ -46,7 +46,7 @@ class ModelPost
         $isInserted = $insertPost->execute($postContent);
 
         if ($isInserted === false) {
-            var_dump('oops', $insertPost->errorCode(), $insertPost->errorInfo());
+            print_r('oops', $insertPost->errorCode(), $insertPost->errorInfo());
         }
     }
 
@@ -56,7 +56,7 @@ class ModelPost
         $insertPost = SPDO::getInstance()->prepare($sqlQuery);
         $isInserted = $insertPost->execute($postContent);
         if ($isInserted === false) {
-            var_dump('oops', $insertPost->errorCode(), $insertPost->errorInfo());
+            print_r('oops', $insertPost->errorCode(), $insertPost->errorInfo());
         }
     }
 
