@@ -21,7 +21,6 @@ class ModelComment
         $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE id = ?');
         $statement->execute([$idComment]);
         $comment = $statement->fetch();
-        var_dump('idcomment get commentbid', $idComment);
         return $comment;
     }
 

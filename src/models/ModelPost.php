@@ -20,7 +20,7 @@ class ModelPost
         return $posts;
     }
 
-    public function getPostById($idPost)
+    public function getPostById(int $idPost)
     {
         $statement = SPDO::getInstance()->prepare(
             'SELECT p.*, u.username
@@ -33,7 +33,7 @@ class ModelPost
         return $statement->fetch();
     }
 
-    public function createPostModel($postContent)
+    public function createPostModel(array $postContent)
     {
 
         // Ecriture de la requête
@@ -50,7 +50,7 @@ class ModelPost
         }
     }
 
-    public function updatePostModel($postContent)
+    public function updatePostModel(array $postContent)
     {
         $sqlQuery = 'UPDATE posts SET title = :title, message = :message, updated_at = :updated_at  WHERE id = :id';
         $insertPost = SPDO::getInstance()->prepare($sqlQuery);
@@ -60,11 +60,9 @@ class ModelPost
         }
     }
 
-    public function deletePostModel($postId)
+    public function deletePostModel(int $postId)
     {
         $statement = SPDO::getInstance()->prepare('DELETE FROM posts WHERE id= ?');
-        var_dump($postId) ;
-
         return $statement->execute([$postId]);
     }
 }
