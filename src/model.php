@@ -1,8 +1,5 @@
 <?php
 
-// namespace Marle\BlogOpc\src\model;
-// use PDO;
-
 class SPDO
 {
     /**

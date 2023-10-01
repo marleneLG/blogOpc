@@ -85,7 +85,7 @@ class PostController
     }
 
     //récupérer le posts et renvoyer vers formulaire de création
-    public function displayUpdatePost($postId)
+    public function displayUpdatePost(int $postId)
     {
         if ($this->isAuthorized() === false) return;
 
@@ -118,7 +118,7 @@ class PostController
         $this->index();
     }
 
-    public function deletePost($postId)
+    public function deletePost(int $postId)
     {
         if ($this->isAuthorized() === false) return;
 
@@ -126,7 +126,7 @@ class PostController
         $allPosts = $postInstance->getPosts();
         $this->twig->addGlobal('session', $_SESSION);
 
-        if ($postInstance->deletePostModel($postId) == true) {
+        if ($postInstance->deletePostModel($postId) === true) {
             echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'validMessage' => 'Post supprimé avec succès']);
         } else {
             echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'errorMessage' => 'Post non supprimé']);

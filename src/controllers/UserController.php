@@ -53,7 +53,7 @@ class UserController
         $this->index();
     }
 
-    public function updateUserAdmin($userId)
+    public function updateUserAdmin(int $userId)
     {
         if ($this->hasRole() === false) return;
 
@@ -65,7 +65,7 @@ class UserController
         echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
     }
 
-    public function updateUserSimple($userId)
+    public function updateUserSimple(int $userId)
     {
         if ($this->hasRole() === false) return;
 
@@ -77,7 +77,7 @@ class UserController
         echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
     }
 
-    public function updateUser($userId)
+    public function updateUser(int $userId)
     {
         if ($this->hasRole() === false) return;
 
@@ -138,7 +138,7 @@ class UserController
             $isFound = false;
 
             //si userfound est dans la base de données et password valid
-            if ($userFound != false) {
+            if ($userFound !== false) {
                 $isPasswordValid = password_verify($password, $userFound['password']);
                 if ($isPasswordValid) {
                     $_SESSION['logged_user_email'] = $email;

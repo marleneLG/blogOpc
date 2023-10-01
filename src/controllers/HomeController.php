@@ -14,7 +14,7 @@ class HomeController
         $this->twig = $twig;
     }
 
-    public function index($errorMessage = null)
+    public function index(string $errorMessage = null)
     {
         $user = new ModelUser();
         $allUsers = $user->getUsers();

@@ -2,8 +2,6 @@
 
 namespace Marle\BlogOpc\controllers;
 
-// session_start();
-
 use Marle\BlogOpc\models\ModelComment;
 use Marle\BlogOpc\models\ModelPost;
 use Marle\BlogOpc\models\ModelUser;
@@ -120,7 +118,7 @@ class CommentController
         $commentInstance = new ModelComment();
         $errorMessage = 'Commentaire non supprimé';
         $validMessage = 'Commentaire supprimé avec succès';
-        if ($commentInstance->deleteCommentModel($commentId) == true) {
+        if ($commentInstance->deleteCommentModel($commentId) === true) {
             $this->displayManagementComment($validMessage);
         } else {
             $this->displayManagementComment($errorMessage);
