@@ -21,7 +21,7 @@ class ModelUser
         $isInserted = $insertUser->execute($userContent);
 
         if ($isInserted === false) {
-            var_dump('oops', $insertUser->errorCode(), $insertUser->errorInfo());
+            echo 'oops', $insertUser->errorCode(), $insertUser->errorInfo();
         }
     }
 
@@ -31,7 +31,7 @@ class ModelUser
         $insertUser = SPDO::getInstance()->prepare($sqlQuery);
         $isInserted = $insertUser->execute([':id' => $userId]);
         if ($isInserted === false) {
-            var_dump('oops', $insertUser->errorCode(), $insertUser->errorInfo());
+            echo 'oops', $insertUser->errorCode(), $insertUser->errorInfo();
         }
     }
 
@@ -41,7 +41,7 @@ class ModelUser
         $insertUser = SPDO::getInstance()->prepare($sqlQuery);
         $isInserted = $insertUser->execute([':id' => $userId]);
         if ($isInserted === false) {
-            var_dump('oops', $insertUser->errorCode(), $insertUser->errorInfo());
+            echo 'oops', $insertUser->errorCode(), $insertUser->errorInfo();
         }
     }
 
@@ -51,7 +51,7 @@ class ModelUser
         $insertUser = SPDO::getInstance()->prepare($sqlQuery);
         $isInserted = $insertUser->execute([':id' => $userId]);
         if ($isInserted === false) {
-            var_dump('oops', $insertUser->errorCode(), $insertUser->errorInfo());
+            echo 'oops', $insertUser->errorCode(), $insertUser->errorInfo();
         }
     }
 
