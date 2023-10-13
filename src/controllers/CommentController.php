@@ -13,7 +13,7 @@ class CommentController
     private $datetime;
     private const MAX_MESSAGE_SIZE = 300;
 
-    function __construct($twig)
+    function __construct(mixed $twig)
     {
         $this->datetime = (new \DateTime('now'))->format('Y-m-d H:i:s');
         $this->twig = $twig;

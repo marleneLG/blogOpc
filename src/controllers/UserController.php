@@ -11,7 +11,7 @@ class UserController
     private $twig;
     private $datetime;
 
-    function __construct($twig)
+    function __construct(mixed $twig)
     {
         $this->twig = $twig;
         $this->datetime = (new \DateTime('now'))->format('Y-m-d H:i:s');
