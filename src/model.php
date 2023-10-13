@@ -38,7 +38,7 @@ class SPDO
      *
      * @var string
      */
-    const DEFAULT_SQL_PASS = 'root';
+    const DEFAULT_SQL_PASS = '';
 
     /**
      * Constante: nom de la bdd

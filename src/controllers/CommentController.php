@@ -87,7 +87,7 @@ class CommentController
         $comment = new ModelComment();
         $comment->createCommentModel($commentContent);
 
-        echo $this->index($postIdFromDb);
+        $this->index($postIdFromDb);
     }
 
     public function displayManagementComment(string $errorMessage = null, string $validMessage = null): void
