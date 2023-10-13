@@ -23,7 +23,7 @@ class CommentController
      * Display a listing of the resource.
      *
      */
-    public function index($postId): void
+    public function index(int $postId): void
     {
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsApprovedFromPostId($postId);
@@ -33,7 +33,7 @@ class CommentController
         echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]);
     }
 
-    public function isAuthorized()
+    public function isAuthorized(): bool
     {
         $userInstance = new UserController($this->twig);
         return $userInstance->hasRole();
@@ -124,7 +124,7 @@ class CommentController
             $this->displayManagementComment($errorMessage);
         }
     }
-    public function getPostById(int $postId)
+    public function getPostById(int $postId): array
     {
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
