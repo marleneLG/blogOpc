@@ -94,7 +94,7 @@ class SPDO
         return $this->PDOInstance->query($query);
     }
 
-    public function prepare($prepare)
+    public function prepare($prepare): PDOStatement
     {
         return $this->PDOInstance->prepare($prepare);
     }
