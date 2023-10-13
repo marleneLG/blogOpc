@@ -9,7 +9,7 @@ class FormController
     private const MAX_MESSAGE_LENGTH = 300;
     private const MAX_LENGTH = 50;
 
-    function __construct($twig)
+    function __construct(mixed $twig)
     {
         $this->twig = $twig;
     }

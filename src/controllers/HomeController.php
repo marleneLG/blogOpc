@@ -9,7 +9,7 @@ class HomeController
     private $twig;
 
 
-    function __construct($twig)
+    function __construct(mixed $twig)
     {
         $this->twig = $twig;
     }

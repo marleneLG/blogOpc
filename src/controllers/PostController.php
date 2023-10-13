@@ -14,7 +14,7 @@ class PostController
     const MAX_POST_TITLE_LENGTH = 45;
 
 
-    function __construct($twig)
+    function __construct(mixed $twig)
     {
         $this->datetime = (new \DateTime('now'))->format('Y-m-d H:i:s');
         $this->twig = $twig;
