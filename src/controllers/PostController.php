@@ -20,20 +20,20 @@ class PostController
         $this->twig = $twig;
     }
 
-    public function index()
+    public function index(): void
     {
         $post = new ModelPost();
         $allPosts = $post->getPosts();
         echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
     }
 
-    public function isAuthorized()
+    public function isAuthorized(): bool
     {
         $userInstance = new UserController($this->twig);
         return $userInstance->hasRole();
     }
 
-    public function displayFormPost()
+    public function displayFormPost(): void
     {
         if ($this->isAuthorized() === false) return;
 
@@ -41,7 +41,7 @@ class PostController
         echo $this->twig->render('createPost.twig');
     }
 
-    public function validForm()
+    public function validForm(): void
     {
         if ($this->isAuthorized() === false) return;
 
@@ -56,7 +56,7 @@ class PostController
         }
     }
 
-    public function createPost()
+    public function createPost(): void
     {
         if ($this->isAuthorized() === false) return;
 
@@ -85,7 +85,7 @@ class PostController
     }
 
     //récupérer le posts et renvoyer vers formulaire de création
-    public function displayUpdatePost(int $postId)
+    public function displayUpdatePost(int $postId): void
     {
         if ($this->isAuthorized() === false) return;
 
@@ -94,7 +94,7 @@ class PostController
         echo $this->twig->render('editPost.twig', ['post' => $post]);
     }
 
-    public function editPost()
+    public function editPost(): void
     {
         if ($this->isAuthorized() === false) return;
 
@@ -118,7 +118,7 @@ class PostController
         $this->index();
     }
 
-    public function deletePost(int $postId)
+    public function deletePost(int $postId): void
     {
         if ($this->isAuthorized() === false) return;
 

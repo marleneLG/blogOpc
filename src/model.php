@@ -31,7 +31,7 @@ class SPDO
      *
      * @var string
      */
-    const DEFAULT_SQL_HOST = 'localhost';
+    const DEFAULT_SQL_HOST = '127.0.0.1';
 
     /**
      * Constante: hôte de la bdd
@@ -45,7 +45,7 @@ class SPDO
      *
      * @var string
      */
-    const DEFAULT_PORT = '3307';
+    const DEFAULT_PORT = '3306';
 
     /**
      * Constante: nom de la bdd

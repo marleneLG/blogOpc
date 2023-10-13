@@ -17,12 +17,12 @@ class UserController
         $this->datetime = (new \DateTime('now'))->format('Y-m-d H:i:s');
     }
 
-    public function index()
+    public function index(): void
     {
         echo $this->twig->render('connexion.twig');
     }
 
-    public function createUser()
+    public function createUser(): void
     {
         if ($this->hasRole() === false) return;
 
@@ -53,7 +53,7 @@ class UserController
         $this->index();
     }
 
-    public function updateUserAdmin(int $userId)
+    public function updateUserAdmin(int $userId): void
     {
         if ($this->hasRole() === false) return;
 
@@ -65,7 +65,7 @@ class UserController
         echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
     }
 
-    public function updateUserSimple(int $userId)
+    public function updateUserSimple(int $userId): void
     {
         if ($this->hasRole() === false) return;
 
@@ -77,7 +77,7 @@ class UserController
         echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
     }
 
-    public function updateUser(int $userId)
+    public function updateUser(int $userId): void
     {
         if ($this->hasRole() === false) return;
 
@@ -89,13 +89,13 @@ class UserController
         echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers]);
     }
 
-    public function displayFormUser()
+    public function displayFormUser(): void
     {
         //dirige vers formulaire d'ajout d'un user
         echo $this->twig->render('createUser.twig');
     }
 
-    public function displayManagementUser()
+    public function displayManagementUser(): void
     {
         if ($this->hasRole() === false) return;
 
@@ -103,7 +103,7 @@ class UserController
         $allUsers = $user->getUsers();
         echo $this->twig->render('admin.twig', ['users' => $allUsers]);
     }
-    public function hasRole()
+    public function hasRole(): bool
     {
         //fonction qui vérifie si droit ou pas
         //si pas admin = error message 
@@ -123,7 +123,7 @@ class UserController
         return true;
     }
 
-    public function login()
+    public function login(): void
     {
         $postEmail = $_POST['email'];
         $postPassword = $_POST['password'];
@@ -157,7 +157,7 @@ class UserController
         }
     }
 
-    public function disconnect()
+    public function disconnect(): void
     {
         unset($_SESSION['logged_user_email']);
         $this->twig->addGlobal('session', $_SESSION);

@@ -23,7 +23,7 @@ class CommentController
      * Display a listing of the resource.
      *
      */
-    public function index(int $postId)
+    public function index($postId): void
     {
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsApprovedFromPostId($postId);
@@ -39,7 +39,7 @@ class CommentController
         return $userInstance->hasRole();
     }
 
-    public function displayCommentForm(int $postId, string $errorMessage = null)
+    public function displayCommentForm(int $postId, string $errorMessage = null): void
     {
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
@@ -49,7 +49,7 @@ class CommentController
         ]);
     }
 
-    public function createComment()
+    public function createComment(): void
     {
         if (isset($_POST['message'])) {
             $postMessage = $_POST['message'];
@@ -90,7 +90,7 @@ class CommentController
         echo $this->index($postIdFromDb);
     }
 
-    public function displayManagementComment(string $errorMessage = null, string $validMessage = null)
+    public function displayManagementComment(string $errorMessage = null, string $validMessage = null): void
     {
         if ($this->isAuthorized() === false) return;
 
@@ -102,7 +102,7 @@ class CommentController
         echo $this->twig->render('admin.twig', ['comments' => $allComments, 'users' => $allUsers, 'number' => $numberComments, 'validMessage' => $validMessage, 'errorMessage' => $errorMessage]);
     }
 
-    public function updateComment(int $commentId)
+    public function updateComment(int $commentId): void
     {
         if ($this->isAuthorized() === false) return;
 
@@ -111,7 +111,7 @@ class CommentController
         $this->displayManagementComment();
     }
 
-    public function deleteComment(int $commentId)
+    public function deleteComment(int $commentId): void
     {
         if ($this->isAuthorized() === false) return;
 

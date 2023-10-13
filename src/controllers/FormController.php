@@ -14,7 +14,7 @@ class FormController
         $this->twig = $twig;
     }
 
-    public function sendForm()
+    public function sendForm(): void
     {
         $postName = $_POST['name'];
         $postPhone = $_POST['phone'];

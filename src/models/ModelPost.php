@@ -8,7 +8,7 @@ use SPDO;
 
 class ModelPost
 {
-    public function getPosts()
+    public function getPosts(): array
     {
         $query = 'SELECT p.*, u.username
         FROM posts p
@@ -20,7 +20,7 @@ class ModelPost
         return $posts;
     }
 
-    public function getPostById(int $idPost)
+    public function getPostById(int $idPost): array
     {
         $statement = SPDO::getInstance()->prepare(
             'SELECT p.*, u.username
@@ -33,7 +33,7 @@ class ModelPost
         return $statement->fetch();
     }
 
-    public function createPostModel(array $postContent)
+    public function createPostModel(array $postContent): void
     {
 
         // Ecriture de la requête
@@ -50,7 +50,7 @@ class ModelPost
         }
     }
 
-    public function updatePostModel(array $postContent)
+    public function updatePostModel(array $postContent): void
     {
         $sqlQuery = 'UPDATE posts SET title = :title, message = :message, updated_at = :updated_at  WHERE id = :id';
         $insertPost = SPDO::getInstance()->prepare($sqlQuery);
@@ -60,7 +60,7 @@ class ModelPost
         }
     }
 
-    public function deletePostModel(int $postId)
+    public function deletePostModel(int $postId): bool
     {
         $statement = SPDO::getInstance()->prepare('DELETE FROM posts WHERE id= ?');
         return $statement->execute([$postId]);
