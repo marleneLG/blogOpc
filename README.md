@@ -50,7 +50,7 @@ In order to install the project, follow these simple steps.
 * If you are missing any information, please ask your webhost for SMTP and Database credentials
 * Install composer [Composer](https://getcomposer.org/doc/00-intro.md)
 * In your CMD, move on your project directory using cd command:
-    {% filename %}cd your/directory{% endfilename %}
+    ```cd your/directory```
 * Run: 
-    {% filename %}composer install{% endfilename %}
+   ```composer install```
 * All dependencies should be installed in a vendor directory.
