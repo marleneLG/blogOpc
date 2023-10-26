@@ -1,5 +1,3 @@
-[![forthebadge](https://forthebadge.com/images/badges/made-with-php.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
-
 # Project 5 : Personnal blog
 
 This project was created as part of my training with openclassrooms to present you my skills obtained through my learning.
@@ -37,22 +35,22 @@ In order to install the project, follow these simple steps.
 * SMTP server WAMP/MAMP for local use
 * MySQL : phpMyAdmin 
 * Librarie will be installed using Composer (Twig)
-* CSS libraries [Bootstrap](Bootstrap : https://getbootstrap.com/)
+* CSS libraries [Bootstrap](https://getbootstrap.com/)
 * Mailing service with docker
 
 ## Installation
 
 ### Clone
 
-* Git clone the repository from this page. See GitHub Documentation
+* Git clone the repository from this page. [GitHub Documentation](https://docs.github.com/fr/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 ### Configuration
 
-* Open php.ini file, then replace Databse and SMTP fields with your own information
-* If you are missing any information, please ask you webhost for SMTP and Database credentials
+* Open php.ini file, then replace Database and SMTP fields with your own information
+* If you are missing any information, please ask your webhost for SMTP and Database credentials
 * Install composer [Composer](https://getcomposer.org/doc/00-intro.md)
 * In your CMD, move on your project directory using cd command:
-cd your/directory
+    {% filename %}cd your/directory{% endfilename %}
 * Run: 
-composer install
+    {% filename %}composer install{% endfilename %}
 * All dependencies should be installed in a vendor directory.
