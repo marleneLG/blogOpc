@@ -26,7 +26,7 @@ class ModelComment
 
     public function getCommentsIsApprovedFromPostId(int $postId): array
     {
-        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND post_id = ?');
+        $statement = SPDO::getInstance()->prepare('SELECT * FROM comments WHERE is_approved=1 AND post_id = ? ORDER BY updated_at DESC');
         $statement->execute([$postId]);
         $comments = $statement->fetchAll();
         return $comments;
@@ -34,7 +34,7 @@ class ModelComment
 
     public function getCommentsIsNotApproved(): array
     {
-        $statement = SPDO::getInstance()->query('SELECT * FROM comments WHERE is_approved=0');
+        $statement = SPDO::getInstance()->query('SELECT * FROM comments WHERE is_approved=0 ORDER BY updated_at DESC');
         $statement->execute();
         $comments = $statement->fetchAll();
         return $comments;

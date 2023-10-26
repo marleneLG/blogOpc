@@ -14,7 +14,7 @@ class UserController
     function __construct(mixed $twig)
     {
         $this->twig = $twig;
-        $this->datetime = (new \DateTime('now'))->format('Y-m-d H:i:s');
+        $this->datetime = (new \DateTime('now'))->format('d/m/Y H:i:s');
     }
 
     public function index(): void

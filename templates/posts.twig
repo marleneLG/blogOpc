@@ -10,11 +10,11 @@ Blog
         <div class="add-post">
             {% if session.logged_user_email is defined %}
             <button type="button" class="btn btn-outline-primary btn-sm"><a
-                    href="index.php?action=displayFormPost">Ajouter un
-                    post</a> </button>
+                    href="index.php?action=displayFormPost">Ajouter une
+                    publication</a> </button>
             {% endif %}
         </div>
-        <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="col-md-10 col-lg-8 col-xl-7 offset-12">
             {% if errorMessage %}
             <div class="alert alert-danger">{{errorMessage}}</div>
             {% endif %}
@@ -24,10 +24,9 @@ Blog
             {% for currentPost in posts %}
             <div class="post-preview">
                 <a href="index.php?action=post&amp;id={{ currentPost.id }}">
-                    <h2 class="post-title">{{ currentPost.title }}</h2>
-                    <p>{{'Cliquez pour voir le post dans son intégralité'}}</p>
-                    <p>Rédigé par {{currentPost.username}}<p>
-                        <p>Le {{currentPost.updated_at}}</p>
+                    <div class="post-title">{{ currentPost.title }}</div>
+                    <p class="elipsis">{{ currentPost.message }}</p>
+                    <p class="post-meta">Rédigé par {{currentPost.username}} le {{currentPost.updated_at}}</p>
                 </a>
             </div>
             <hr class="my-4" />
