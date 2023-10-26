@@ -92,6 +92,13 @@
   }
 }
 
+.elipsis {
+  width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -303,7 +310,7 @@ a {
 }
 
 .add-post {
-  margin-left: 80%;
+  margin-left: 65%;
 }
 
 /* a:hover {
@@ -929,6 +936,10 @@ progress {
 
 .offset-11 {
   margin-left: 91.66666667%;
+}
+
+.offset-12 {
+  margin-left: 20%;
 }
 
 .g-0,
@@ -7722,6 +7733,7 @@ fieldset:disabled .btn {
 
 .d-flex {
   display: flex !important;
+  justify-content: space-around;
 }
 
 .d-inline-flex {
@@ -8275,6 +8287,7 @@ fieldset:disabled .btn {
 .my-4 {
   margin-top: 1.5rem !important;
   margin-bottom: 1.5rem !important;
+  border-color: black;
 }
 
 .my-5 {
@@ -12491,6 +12504,7 @@ header.masthead .site-heading {
 header.masthead .page-heading,
 header.masthead .site-heading {
   text-align: center;
+  margin-top: -10%;
 }
 
 header.masthead .page-heading h1,
@@ -12542,7 +12556,7 @@ header.masthead .post-heading .meta a {
 @media (min-width: 992px) {
   header.masthead {
     padding-top: 12.5rem;
-    padding-bottom: 12.5rem;
+    padding-bottom: 0.5rem;
   }
 
   header.masthead .page-heading h1,
@@ -12611,7 +12625,7 @@ header.masthead .post-heading .meta a {
 
 @media (min-width: 992px) {
   .post-preview>a>.post-title {
-    font-size: 4.25rem;
+    font-size: 3.25rem;
   }
 }
 

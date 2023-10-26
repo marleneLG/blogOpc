@@ -7,22 +7,6 @@ Blog
 {% block content %}
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-        {% if session.logged_user_email is defined %}
-        <div class="d-flex flex-row">
-            <div>
-                <button type="button" class="btn btn-outline-danger btn-sm"><a
-                        href="index.php?action=deletePost&amp;postId={{ post.id }}">Supprimer le
-                        post</a> </button>
-            </div>
-            <div>
-                <button type="button" class="btn btn-outline-warning btn-sm"><a
-                        href="index.php?action=displayUpdatePost&amp;postId={{ post.id }}">Modifier le
-                        post</a>
-                </button>
-            </div>
-        </div>
-        {% endif %}
-        <hr class="my-4" />
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="post-preview">
                 <h1 class="post-title">{{ post.title }}</h1>
@@ -30,7 +14,7 @@ Blog
                 <p class="post-meta">
                     Posté par
                     <b href="#!">{{ post.username }}</b>
-                    Le
+                    le
                     <b>{{ post.created_at }}</b>
                 </p>
             </div>
@@ -52,11 +36,27 @@ Blog
             {% endfor %}
             <hr class="my-4" />
         </div>
+        {% if session.logged_user_email is defined and session.is_validated == 1 %}
+        <button type="button" class="btn btn-secondary mb-2"><a
+                href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
+        {% endif %}
+        <div>
+            {% if session.logged_user_email is defined %}
+            <div class="d-flex flex-row">
+                <div>
+                    <button type="button" class="btn btn-outline-warning btn-sm"><a
+                            href="index.php?action=displayUpdatePost&amp;postId={{ post.id }}">Modifier la
+                            publication</a>
+                    </button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-outline-danger btn-sm"><a
+                            href="index.php?action=deletePost&amp;postId={{ post.id }}">Supprimer la
+                            publication</a> </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
     </div>
-    {% if session.logged_user_email is defined and session.is_validated == 1 %}  
-            <button type="button" class="btn btn-secondary mb-2"><a
-                    href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
-    {% endif %}
-
 </div>
 {% endblock content %}

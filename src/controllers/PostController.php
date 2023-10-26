@@ -16,7 +16,7 @@ class PostController
 
     function __construct(mixed $twig)
     {
-        $this->datetime = (new \DateTime('now'))->format('Y-m-d H:i:s');
+        $this->datetime = (new \DateTime('now'))->format('d/m/Y H:i:s');
         $this->twig = $twig;
     }
 
