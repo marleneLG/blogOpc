@@ -16,15 +16,16 @@ class PostController
 
     function __construct(mixed $twig)
     {
-        $this->datetime = (new \DateTime('now'))->format('d/m/Y H:i:s');
+        $this->datetime = (new \DateTime('now'))->format('Y/m/d H:i:s');
         $this->twig = $twig;
     }
 
-    public function index(): void
+    public function index(string $errorMessage = null, string $validMessage = null): void
     {
         $post = new ModelPost();
         $allPosts = $post->getPosts();
-        echo $this->twig->render('posts.twig', ['posts' => $allPosts]);
+
+        echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'validMessage' => $validMessage, 'errorMessage' => $errorMessage]);
     }
 
     public function isAuthorized(): bool
@@ -123,13 +124,14 @@ class PostController
         if ($this->isAuthorized() === false) return;
 
         $postInstance = new ModelPost();
-        $allPosts = $postInstance->getPosts();
+        $validMessage = 'Post supprimé avec succès';
+        $errorMessage = 'Post non supprimé';
         $this->twig->addGlobal('session', $_SESSION);
 
         if ($postInstance->deletePostModel($postId) === true) {
-            echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'validMessage' => 'Post supprimé avec succès']);
+            $this->index($validMessage);
         } else {
-            echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'errorMessage' => 'Post non supprimé']);
+            $this->index($errorMessage);
         }
     }
 }
