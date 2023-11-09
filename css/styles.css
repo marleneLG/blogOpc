@@ -92,11 +92,8 @@
   }
 }
 
-.elipsis {
-  width: 110px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.post-content {
+  word-wrap: break-word;
 }
 
 body {
