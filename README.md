@@ -18,13 +18,6 @@ This project was created as part of my training with openclassrooms to present y
 - No security breaches.
 - Project monitored via SymfonyInsight.
 
-## Built with
-
-- PHP 8.2.0
-- phpMyAdmin 5.2.0
-- MySQL 8.0.31
-- Twig 3.5
-
 ## Getting started
 
 In order to install the project, follow these simple steps.
@@ -33,7 +26,7 @@ In order to install the project, follow these simple steps.
 
 - PHP > 8.2.0
 - SMTP server WAMP/MAMP for local use
-- MySQL : phpMyAdmin
+- MySQL 8.0.31
 - Librarie will be installed using Composer [Twig](https://twig.symfony.com/doc/1.x/installation.html)
 - CSS libraries [Bootstrap](https://getbootstrap.com/)
 - Mailing service with docker

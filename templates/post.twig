@@ -10,7 +10,7 @@ Blog
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="post-preview">
                 <h1 class="post-title">{{ post.title }}</h1>
-                <p class="post-subtitle">{{ post.message }}</p>
+                <p class="post-subtitle post-content">{{ post.message }}</p>
                 <p class="post-meta">
                     Posté par
                     <b href="#!">{{ post.username }}</b>
@@ -30,6 +30,8 @@ Blog
                 <p>{{ currentComment.message }}</p>
                 Le
                 <b>{{ currentComment.created_at }}</b>
+                par
+                <b>{{ currentComment.username}}</b>
                 </p>
             </div>
             <hr class="my-4" />

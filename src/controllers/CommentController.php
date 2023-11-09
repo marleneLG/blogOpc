@@ -6,6 +6,8 @@ use Marle\BlogOpc\models\ModelComment;
 use Marle\BlogOpc\models\ModelPost;
 use Marle\BlogOpc\models\ModelUser;
 use Marle\BlogOpc\controllers\UserController;
+use DateTime;
+use IntlDateFormatter;
 
 class CommentController
 {
@@ -15,7 +17,7 @@ class CommentController
 
     function __construct(mixed $twig)
     {
-        $this->datetime = (new \DateTime('now'))->format('d/m/Y H:i:s');
+        $this->datetime = (new \DateTime('now'))->format('Y/m/d H:i:s');
         $this->twig = $twig;
     }
 
@@ -30,6 +32,22 @@ class CommentController
         $postContent = $this->getPostById($postId);
         $user = new ModelUser();
         $allUsers = $user->getUsers();
+        $formatter = IntlDateFormatter::create(
+            'fr_FR',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::NONE,
+        );
+
+        $dateStringPost = $postContent['created_at'];
+        $datePost = new DateTime(($dateStringPost));
+        $postContent['created_at'] = $formatter->format($datePost);
+
+        for ($i = 0; $i < count($allComments); $i++) {
+            $dateStringComment = $allComments[$i]['created_at'];
+            $dateComment = new DateTime(($dateStringComment));
+            $allComments[$i]['created_at'] = $formatter->format($dateComment);
+        }
+
         echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]);
     }
 
@@ -70,6 +88,8 @@ class CommentController
         $message = htmlspecialchars($postMessage);
         $postInstance = new ModelPost();
         $post = $postInstance->getPostById($postId);
+        $modelUser = new ModelUser();
+        $userId = $modelUser->getUserByEmail($_SESSION['logged_user_email'])['id'];
 
         if ($post === false) {
             $errorMessage = 'Pas de post associé existant';
@@ -82,7 +102,8 @@ class CommentController
             'message' => $message,
             'created_at' => $this->datetime,
             'updated_at' => $this->datetime,
-            'post_id' => $postIdFromDb
+            'post_id' => $postIdFromDb,
+            'user_id' => $userId
         ];
         $comment = new ModelComment();
         $comment->createCommentModel($commentContent);

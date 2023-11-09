@@ -2,9 +2,11 @@
 
 namespace Marle\BlogOpc\controllers;
 
+use DateTime;
 use Marle\BlogOpc\models\ModelPost;
 use Marle\BlogOpc\models\ModelUser;
 use Marle\BlogOpc\controllers\UserController;
+use IntlDateFormatter;
 
 class PostController
 {
@@ -25,6 +27,19 @@ class PostController
         $post = new ModelPost();
         $allPosts = $post->getPosts();
 
+        $formatter = IntlDateFormatter::create(
+            'fr_FR',
+            IntlDateFormatter::FULL,
+            IntlDateFormatter::NONE,
+        );
+        for ($i = 0; $i < count($allPosts); $i++) {
+            $message = $allPosts[$i]['message'];
+            $dateString = $allPosts[$i]['updated_at'];
+            $date = new DateTime(($dateString));
+            $firstSentence = strpos($message, ".", 0);
+            $allPosts[$i]['message'] = substr($message, 0, $firstSentence) . '...';
+            $allPosts[$i]['updated_at'] = $formatter->format($date);
+        }
         echo $this->twig->render('posts.twig', ['posts' => $allPosts, 'validMessage' => $validMessage, 'errorMessage' => $errorMessage]);
     }
 
