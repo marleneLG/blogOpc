@@ -19,7 +19,7 @@ class UserController
 
     public function index(): void
     {
-        echo $this->twig->render('connexion.twig');
+        echo $this->twig->render('login.twig');
     }
 
     public function createUser(): void
@@ -153,7 +153,7 @@ class UserController
             if ($isFound) {
                 echo $this->twig->render('home.twig');
             } else {
-                echo $this->twig->render('connexion.twig', ['errorMessage' => $errorMessage]);
+                echo $this->twig->render('login.twig', ['errorMessage' => $errorMessage]);
             }
         }
     }
