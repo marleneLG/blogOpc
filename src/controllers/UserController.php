@@ -127,6 +127,7 @@ class UserController
     {
         $postEmail = $_POST['email'];
         $postPassword = $_POST['password'];
+        $errorMessage = 'Merci de créer un compte et de patienter pendant la validation de celui-ci';
         // vérifier les champs envoyés && non null/vide
         if (isset($postEmail) && isset($postPassword)) {
             $email = htmlspecialchars($postEmail);
@@ -152,7 +153,7 @@ class UserController
             if ($isFound) {
                 echo $this->twig->render('home.twig');
             } else {
-                echo $this->twig->render('connexion.twig');
+                echo $this->twig->render('connexion.twig', ['errorMessage' => $errorMessage]);
             }
         }
     }
