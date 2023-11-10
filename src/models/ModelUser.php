@@ -10,14 +10,8 @@ class ModelUser
 {
     public function createUserModel(array $userContent): void
     {
-
-        // Ecriture de la requête
         $sqlQuery = 'INSERT INTO users(username, password, email, is_admin, created_at, updated_at, is_validated) VALUES (:username, :password, :email, :is_admin, :created_at, :updated_at, :is_validated)';
-
-        // Préparation insertion en base
         $insertUser = SPDO::getInstance()->prepare($sqlQuery);
-
-        // Exécution
         $isInserted = $insertUser->execute($userContent);
 
         if ($isInserted === false) {
@@ -66,6 +60,8 @@ class ModelUser
     {
         $statement = SPDO::getInstance()->prepare('SELECT id, password, is_validated FROM users WHERE email = :email');
         $statement->execute([':email' => $email]);
-        return $statement->fetch();
+        $result = $statement->fetch();
+
+        return $result === false ? [] : $result;
     }
 }
