@@ -94,8 +94,10 @@
                         </li>
                     </ul>
                     <div class="small text-center text-muted fst-italic">Copyright &copy; Le Guern Marlène 2023</div>
+                    {% if session.logged_user_email is null %}
                     <div class="small text-center text-muted fst-italic"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="index.php?action=connect">Connexion/Admin</a></div>
+                    {% endif %}
                 </div>
             </div>
         </div>
