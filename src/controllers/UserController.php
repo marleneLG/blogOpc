@@ -24,8 +24,6 @@ class UserController
 
     public function createUser(): void
     {
-        if ($this->hasRole() === false) return;
-
         $postUsername = $_POST['username'];
         $postPassword = $_POST['password'];
         $postEmail = $_POST['email'];
