@@ -43,7 +43,7 @@ Blog
                 href="index.php?action=displayCommentForm&amp;id={{ post.id }}">Ajouter un commentaire</a> </button>
         {% endif %}
         <div>
-            {% if session.logged_user_email is defined %}
+            {% if session.logged_user_email is defined and session.is_admin == 1 %}
             <div class="d-flex flex-row">
                 <div>
                     <button type="button" class="btn btn-outline-warning btn-sm"><a

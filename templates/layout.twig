@@ -39,9 +39,11 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?action=posts">Blog</a>
                     </li>
                     {# si admin #}
-                    {% if session.logged_user_email is defined %}
+                    {% if session.logged_user_email is defined and session.is_admin == 1 %}
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="index.php?action=managementComment">Gestion</a></li>
+                    {% endif %}
+                    {% if session.logged_user_email is defined %}
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="index.php?action=disconnect">Déconnexion</a></li>
                     {% endif %}

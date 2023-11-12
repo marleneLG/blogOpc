@@ -8,7 +8,7 @@ Blog
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5">
         <div class="add-post">
-            {% if session.logged_user_email is defined %}
+            {% if session.logged_user_email is defined and session.is_admin == 1 %}
             <button type="button" class="btn btn-outline-primary btn-sm"><a
                     href="index.php?action=displayFormPost">Ajouter une
                     publication</a> </button>

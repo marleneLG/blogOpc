@@ -17,9 +17,9 @@ class UserController
         $this->datetime = (new \DateTime('now'))->format('Y/m/d H:i:s');
     }
 
-    public function index(): void
+    public function index(string $errorMessage = null, string $validMessage = null): void
     {
-        echo $this->twig->render('login.twig');
+        echo $this->twig->render('login.twig', ['validMessage' => $validMessage, 'errorMessage' => $errorMessage]);
     }
 
     public function createUser(): void
@@ -46,9 +46,14 @@ class UserController
         ];
 
         $user = new ModelUser();
-        $user->createUserModel($userContent);
+        $validMessage = 'Compte créé avec succès, merci de patienter pendant la vlidation de celui-ci par un administrateur';
+        $errorMessage = 'Erreur dans la création de votre compte, merci de rééssayer';
 
-        $this->index();
+        if ($user->createUserModel($userContent) === null) {
+            $this->index($validMessage);
+        } else {
+            $this->index($errorMessage);
+        }
     }
 
     public function updateUserAdmin(int $userId): void
@@ -113,9 +118,11 @@ class UserController
             $userId = $modelUser->getUserByEmail($_SESSION['logged_user_email'])['id'];
         }
 
-        if (!$isSessionSet || !isset($userId)) {
+        $_SESSION['is_admin'] = $modelUser->getUserByEmail($_SESSION['logged_user_email'])['is_admin'];
+        if (!$isSessionSet || !isset($userId) || $_SESSION['is_admin'] === 0) {
             $homeInstance = new HomeController($this->twig);
             $homeInstance->index('Vous n\'avez pas les droits');
+            $this->twig->addGlobal('session', $_SESSION);
             return false;
         }
         return true;
@@ -135,13 +142,17 @@ class UserController
             $user = new ModelUser();
             $userFound = $user->getUserByEmail($email);
             $isFound = false;
+            $_SESSION['is_validated'] = $userFound['is_validated'];
 
+            if ($_SESSION['is_validated'] === 0) {
+                echo $this->twig->render('login.twig', ['errorMessage' => $errorMessage]);
+                return;
+            }
             //si userfound est dans la base de données et password valid
             if ($userFound !== false) {
                 $isPasswordValid = password_verify($password, $userFound['password']);
                 if ($isPasswordValid) {
                     $_SESSION['logged_user_email'] = $email;
-                    $_SESSION['is_validated'] = $userFound['is_validated'];
                     // si oui, affichage de la page admin
                     $isFound = true;
                     $this->twig->addGlobal('session', $_SESSION);

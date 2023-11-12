@@ -58,7 +58,7 @@ class ModelUser
 
     public function getUserByEmail(string $email): array
     {
-        $statement = SPDO::getInstance()->prepare('SELECT id, password, is_validated FROM users WHERE email = :email');
+        $statement = SPDO::getInstance()->prepare('SELECT id, password, is_validated, is_admin FROM users WHERE email = :email');
         $statement->execute([':email' => $email]);
         $result = $statement->fetch();
 
