@@ -153,6 +153,7 @@ class UserController
                 $isPasswordValid = password_verify($password, $userFound['password']);
                 if ($isPasswordValid) {
                     $_SESSION['logged_user_email'] = $email;
+                    $_SESSION['is_admin'] = $userFound['is_admin'];
                     // si oui, affichage de la page admin
                     $isFound = true;
                     $this->twig->addGlobal('session', $_SESSION);
