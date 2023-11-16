@@ -33,6 +33,14 @@ Blog
                 par
                 <b>{{ currentComment.username}}</b>
                 </p>
+                {% if session.logged_user_email is defined and session.is_admin == 1 %}
+                <p>
+                    <button type="button" class="btn btn-outline-danger">
+                        <a href="index.php?action=deleteComment&amp;commentId={{ currentComment.id }}">Supprimer le
+                            commentaire</a>
+                    </button>
+                </p>
+                {% endif %}
             </div>
             <hr class="my-4" />
             {% endfor %}
