@@ -306,8 +306,9 @@ a {
   text-decoration: none;
 }
 
-.add-post {
+div.row .add-post {
   margin-left: 65%;
+  width: auto;
 }
 
 /* a:hover {
