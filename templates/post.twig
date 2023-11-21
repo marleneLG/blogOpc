@@ -8,6 +8,12 @@ Blog
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
+            {% if errorMessage %}
+            <div class="alert alert-danger">{{errorMessage}}</div>
+            {% endif %}
+            {% if validMessage %}
+            <div class="alert alert-danger">{{validMessage}}</div>
+            {% endif %}
             <div class="post-preview">
                 <h1 class="post-title">{{ post.title }}</h1>
                 <p class="post-subtitle post-content">{{ post.message }}</p>
