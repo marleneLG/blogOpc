@@ -25,7 +25,7 @@ class CommentController
      * Display a listing of the resource.
      *
      */
-    public function index(int $postId): void
+    public function index(int $postId, string $validMessage = null, string $errorMessage = null): void
     {
         $comment = new ModelComment();
         $allComments = $comment->getCommentsIsApprovedFromPostId($postId);
@@ -48,7 +48,7 @@ class CommentController
             $allComments[$i]['created_at'] = $formatter->format($dateComment);
         }
 
-        echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers]);
+        echo $this->twig->render('post.twig', ['comments' => $allComments, 'post' => $postContent, 'users' => $allUsers, 'validMessage' => $validMessage, 'errorMessage' => $errorMessage]);
     }
 
     public function isAuthorized(): bool
@@ -107,8 +107,9 @@ class CommentController
         ];
         $comment = new ModelComment();
         $comment->createCommentModel($commentContent);
+        $validMessage = 'Commentaire bien créé, merci de patienter avant qu\'un administrateur le valide';
 
-        $this->index($postIdFromDb);
+        $this->index($postIdFromDb, $validMessage);
     }
 
     public function displayManagementComment(string $errorMessage = null, string $validMessage = null): void
